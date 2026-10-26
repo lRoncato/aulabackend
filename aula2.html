@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backend I · Aula 02 — Estrutura e Validações (Node)</title>
+<style>
+@font-face{
+  font-family:"Galmuri11";
+  src:url("data:font/woff2;base64,d09GMgABAAAAADXMAAwAAAABfwwAADV4AAJZmQAAAAAAAAAAAAAAAAAAAAAAAAAAG4duHIFgBmAAgmQKhcpQguVxATYCJAOVJAuKVAAEIAWDSAcgG4jGRQaCjQN4EPGaogg2DtQYGFcm3Bhu2Dgwz4OmQPj/nlyNIbAL3ldzrcGcGgPd6YkIw7R4ImLDFKzmfaujC99+aFNR0UKf+uHQpJc2QkFjYQX/o0JDBOtQRdzSlr7QgwjTEEZysRevMttss2FY2sq2hW1/eAa4k+MYFXISVGvZs3cXll/+VJQhTaAIJcoIl7dBxS5KAjoWimx2aFyenkjjveRJDnlpobBEKWSGRHieTStIrjTZHdcUX61txeGD5xkxcmaX06Bk/MZtyVcSfUGtvY9Zlrd8af1KSsNhIADdnDoVHyGEEZ5XRMmRY0ePHmHTznoAM0kgwgDjojD+tx98vw1sdz1gU2But/RswthhiEmI5ERIxEBMYtbOGzbLZFrUsxjtkPoQStnFBPrYvr7/zzeqVu2u6v0nRaqjjmr13C0PnlASTypZHv6kWEqWJ33xbZaeZTsgWTmG719oGtILEq7pxXTY2QQXDmeLmJSA7n9X4N/9zU29Pbm/wXM8fx+qWipuJInpoESFHn4JsGCETJDWcRQjk9CV0ZdpDIiZMKOQWMhIZW5ubEC4/39ftWzxQFFh5EBKmxIdY9Fwc+gcUumiWdz77r3+4b5/BBLASmDYAcVZayRqAhVm8n//A+D/HxiaILV7qE1Rm1JonTsfN0XIRefSVTnryu4MNUnzFq41NO7IweUZRf/c+2u2A6toT+IQMUQaY5rSkEaK1OvR47r343P/hp9akdrb+/x2GIdJXjZUft2SDfFgmagypnuEElUmlCgKt7ejkT8zNz3b6gfduPIvnj7lEa2IGIDrKtEGreh6xp4/+tkC0KGJGezttw5sBOAMsWFtYQ2wAXqKQHiNDTpOHfQU2pBIv5FJ+Z7ikTcojcAkvuHEEvGvIejBh/+pTI9VJjcQ6cyL0XWkA81Jr7LYIk+/phMz3eodFc2MdIqRCEBEsAPawhCPGNL0djYlDQ4dPQETCxE7BymXELlI8I1i0uXNWf3Uhg0LunLr2HWRRhkEOREQoyQelMEZtnht8YWQJkzyuHyUXwSJKJYoAQ2LK6654bZOZSVol4XZsahRVeoQJ0maDFnlQYkqNVpopY12Ouiimx566aN/l7HTLNcrBpb0ypAe8mCV2cXmSyuQe6TPzUTK7tuYIlqkw4q6b2lU0I+gcDyOyJXAXxnXpOEE4Fn200fEM/kzPP1xJKn7JZRwKengf95qXQ7XBt8CWV/hiLqNsTvof5VtQnv2bcF8UnggEUHyy2MEV9WYLeRkEXnx98fAJ9dASZ96WE4xXeLHVNIpdH06g5IXnUNn1DA5Vuwy49N/rIejqYnkkz5GApd70cQAiq50w5jCX4lTE/HVZlBnVaSUALtAAexMI/SswQFLiKPdD5gzz9XOc/Gpoi6Zq+FxArxMAwYdiQENrPutDGJHgFYQxMghrGmgzb4wITjkgjteRKx5lM4WbvZFfS201Tlu9nPd2h8G4qoJImQQVtUrZLDbH+YsOdW4KMiqS0qHwECj57KhVjoWKp0/Pym/u9X16WG7jlqYmxppa5JSwc3ffC7LLT95xTWJoRFFVsv77/v6by9tQsjllQfGEKO/+HfOf/te7P9yEtnD6wbDFipww/5OaWWT4SaJlrRMNi0fBeAjg88TLblTxWdHYKEo6tUE6CxNU/rMltSfSYXs47QBL1GpNaBzpTuEwtnpWDCbvhqpL7rRUJ0jAMj8fDluz9y2fYCMaMUwIY6KPSd2oi5kednFF60WiLqFooomU2qGXHhk1AXMRFTpxUGYz/Q0NIu5EFN6UHKwBwHzPUWzAFeRqE9JjQpWl2KgU/IM2YJuYAGKKB58dWvNHJ2zwCRqYtVm4Y6kwDX0wEkRFkQEI2wtslS3kau1+BJW4vgXX6DAZQBpwMVrEf+XQcxPgz78ByYCzWCQmrB312E/jJ3/65/El1Uv0Kqb6M9E6830kFGx8DiTc+ab7/oZnYNw9YFah9UEhbucNZhkgaRK2CXLmGOJade32IQa7V4I0XXWWrZeFGZg7WDGbnmkzOk+vpEG7rgWI1oK3a0zgJlZSYc6BRyUX7rR0OAPDWA8fxNHBkeFRKx++k9jMC9x31GW67g2u6udYZWSL0kV5W935+mtycbeICNsXpp+4gjbVG3FU2bwkoZmfCzulVeqUDNsMoxQsbS9fPO01gX1ED4Ur+G4S4Kxr1rysTTyE0uJqjuEEg/mtjS3PLStmmsj3CMfS5CfKLU+xXrleNIYcERbXx5fR8j+DqvBPb8qKWpU6tvfhwVr+MKUATSI1WTuwF/qAFS59oooCBaj8R5MNWFZYYwwVXJLCthzZt/gDou9GBjhHQFPSCDU66QQK9/CYxxPqkYYAcxqUh12wj43POqUpQ5al7GBwBs8b7HrhLm83O4T/xhW4sKEW0a//AQ+I9dopGNGxojKaGzN6U7Urc8LhcX3TUf8mKJwQl9a6exe4BAjXYJ82Au8EMz7PWGPv3o/Db3qUkMV4ZCaVQEj9g76aHs+XqeKBLhwN14QrqHmgGo0m4n2/wqEZPAfSriP/8VjOOztvu8vZ5yzIF6Olu6KvDhAPJC/kYDAtp+F/ST26N2rHv8qI9vhepgTM/7ieBQG8IP1ldoZDNISOmTuxNaAJ4Px+/bYT5YgC2fTldGWk63Sa726wPQ93obbmfrrX6NiIj59n08Gc0o6JJrP6cGV/Te/biS4arQR8s+VUj1kyFog7wbdcHeVu8Z69nzrcyan2DDHUJaj6o6SXCccDJczgNJ2tHYIISL/FJTAAizkkxeHCPVi4VnQQIJx3ApbMbVq750cY/6PoGexK/GQi1rrsHEIq7WoK8STW164d0onKOkB2rtykmZWp7tKz0UvZWBZnXnqClhbxTv0FQ6/9Yh6rUP4P/ggJhirM0oEJUCJYaR5NKXFpAyF9RDU80wRxB0vZM3YWiPdNIShReYg7lmjiu6Glk3rEgbtGi4dOA/eUi5z+Mxp5GBIj8L5c5FjoPClLQg0KgkJ9m6I+3O246bSqctggulu7AXtJkB5tpkPkwo21mG6iM4cHTKXlxaonGCqDiOuNrsABxIbwM2NgdU9q6Fv1u8Vo9/8dZjaX17jh0haSKKeBOV+GSj1Vl1boZ3BHgpWHcI4szWbjdyRxE7K/Q5AYO6YRb3dUULKDO1ONb21Ed9lZC2E7uqgjjFwV4Et9PHoBc/4JVgaJTdOqw1YjLviCl24IhMhthaLsN4qlpVQislt3uwQCvqIihSP8k8uhFeggdeNJGoOHOp9r9AoXDBO2P9A5tYHwziYuOuQ/ZsO/qZolLdcsTB9bPcNYk+7ziHshA92bDmAN77CRLXt1lKhi6P3jlQS9Hb8Uq3WU58hAHLbAbarb0Tj2aGRG743IYG4wacWBHLBnzJNj2aDduQZXgv6a5oUCRUlFBorKfQozalRGsCnwSiBA3oOmSl4zQDUyUgrW9G1PouGIE9WHIXgQag1dQR81Di9s+CZpoPKOfOzx91JyagsUOlSmtweLy3CzaARd40s9IBFAW1bESm43yiz3NJNGzTUj5wI7npIGMGR3TCkPe9C5EKKcdjxBIfe6QsOkPs/HdzlU62pC/h9JYNSSbv0oJVhF0ZF10swPQ1INBH4QZbB9LDnDDTS8YJm4etBwZCvXWi8W1xbtlEZD+Yj04VONZkteh13p7egkPaYKqh/6ekHvE9jhF/Kon23ynQx8e1x5lanrV5kxSN/KxXx/SZ0Fjk9EpzdgXJOGj3S6jprlMyzaWmAshu6QaP+E0R6pU0IEsPGk2O9X20dUexY9nrt2qnrvoYHuewIHjxElFyEQ4gdRKC23madUQ+7YRx8ykcCbKIuoLB7JKIRVOJWQW2390RwDxqXhyolnM5oGum6HtXYM5JtthDpVL3rpsf4UHnMi63jwocDwRWzZ2HTwPoZ4X2hE1aGdQ6pk4LkEAV0w53bwdTqOoEZjwekVHjmEsYJ4a7lMLaBEAAy1cymc81eWXmWCggi8LZ0SofQXY2jMJxZiiowmt1jvJtwHOC0NzAHQeSSRrhEY7TiNQIZxE/mWBMSvkaHoViDFqCu0XfrzqL2KxX93EeecsLmhsPiQVvU714MALgRWDnMLabIcwMV6oesti5p5v4UvXuUIBDW3lD60DDOqftUgmLDsxjbD2Iy+y7HMtCDOqqsEbj4fD5QuqZ4F2qxS0dah4TfO5a4G8vQ09/DE64mdqPXJNwZaxL9P3ToPqDmchSSsk73aZaFIF4FydOzPYqff5+DOunPP3ak3g00JsL+FxYnP8G4DTCJBLMyOU4JXXFuhdGAeeScPCJw0TNmAd7Rn8CwZSQ5Ep5KnBT1gmCKF14yos886In9pE0vWepdzAdIRi5Bf8uCoPJSpghkVY+zFeLjhICpgp8j7N1VEh2iv+afKImX+oLV6BUAmAV81oTjlJsaXatzmuTzSGioJGQb5nJj/WZWdr8u+MDmk4fCtM4UkSHJPkAJ2PPIzCQPFGgcTr6eHpo8KBHdO7CAAPj7UKgXFqYEFBqhpO/G1JGylm9SnipAVnd+CSXtQwNQZAjqmKBA64K4YhpBDQ6QpxKx7KTSpEA6owzyo0Hzdn6CDUOPaOQFj5e+eAf5dyzoCBI8Ac4hmQmaqp+blMTB+pZ+nAQPg+ltQIUySDwFONLhk68msIkwUIPDio33A7vQqWjuBY83/+gjmWtvbtjB8cFwn1F+uh90NwtRu4fUAOji8260M8T6nkO0piDjpDAXC42FFgzU3qSinDyK+3lLF+q/MAdkuk91HMHje99CChpAuQSLQH47/QmqXx19Xt8t7Jurfa0stfhcaZE7+tVaKjPM7XHTkVNtUYW4WNKNmvmdhjIFw+NhUYigmCKWl0c099ADJWSBsAaq12TB6wqluv98oQXN4VSgaffpuD4fXWQ7glu1q+7AqIixIsWFvha2agOZPhBAKKpNliCkyFG6kaCgDXGErfVNaP4gEa9w4/DieWYRmfpcxoXqoowl94ShUVUo5z+27XCnI5IbrQhKOzZMr3K0Czm90C7DHJ6rHvLO7GVRdukVQeMnTLGCIrnbJO6Ik9ER91EF6oZMu6nJUAkY6ld0szK6XuqkD1G7eBkATqcN+yKUjPIGXYMs+8SoUywu1rIPZmd4oQHKuRSl1Pf1N4fIMDpl84SnHUzUWV+Xrzrh/KCQbGQqTWnVGzYZvsGlfzZct0GnA12Vs5t+6FQmfUR0N5pSjdvVcKs4uX2WnXz9CyY3724AbvgGgbGuZiWLknDh9a5BlPHloSmqg70ipCiaTthxxckxmHxIGkydOtkvDFNxnkP0g2DAiBtSU6ZL+tGE8Hq2YQjgrggNsoSCfemLUI90vpZezU7TzWzEOJIm/Xdi2zyHRvnl8i1S6HsdHzNeW2dLFfkhtv1PUUMdr+X10km4Zm5Mtaz7Pto30+5I8HDT/PFxWVBXQVE0s+LwcfuMDBqtJVS+Sb97sVIqPJKb1SOxBZwZlMrkDf3hm9JSN7e15wign37MLkyvvbuZuEMB08DZf3gpt53s04O6++2cuuskwKdnzaPXvIQ3NKXksBWyP1spRebzdBMoekiEPAbcV5h18I6E4mYUFJ/mhVL1ooT8qqC+25sT0njQxn7F9UiIx5lIh/pgpbmItAMCIdGR48Bwu16T/g8I6hvyxpI7hEfq8j8uP9YaRbZ3sRUubnkceI5HCe5nX1P1IaFqJ15kZfqIzVUSTy+I3dTCM25v5E756RGGKmnurr3io6Hq/fZ3TJIiPAQ3n5dRws97rbj/rRIZfYxenieJN9hfda9BYXAy9pjeaUugpOKaJGa8FMU3G2mrFG5AtP2HVVAakwT6jPo0gXcPuspXSDj+a9gF10ApIj0HDxXGkG6HfKWOMq2zFCfKXhFJNMY22wwu0PV2t3KDdzdQ1MkLZnSpTbGcy0qp5+2uqXujJU2pHg82qhUr9fbfBKGipO3VRqXrTo446ZQYJcyEUoLg8pkOazK/yZWBRhRrXXp3i1SIQeJ2SYKIx/Od8dow1RKrNqWG68oiCt5yK2NZ8MxVKhE9JVqjwHpuiyc+E91wWWJxKCvNpYegbsdsQ/XLE2dyTzEa3M9j9cKijxZn0dzZ9sx8EsiycSpNJ+024hsDysdx3SX+Tvtc4oMmSiLLzGahVnKnD7vyUBo1mIxiK8Z2VrrCyaWAYjlzL+5EhyVPiocI7zUT84IYvYytiML1kQZJnCuP39HiltozqjhZz/A4a3UKEfc13a47xJynI2ygO6voOF2GR4xV87gRUwH7Z96IvYKlus6/ssnljWbg0lqKhuourqS7cFNejnWaDzs1NZSOpwxom5Sbux+OW9/7VVdXypo1h7LxOMWTrNwUygNIP8nHOIZxOrDRXHkbqcT3Qq+8ZYCLrMhJT25PkD3O5KuYNuLmpWcO2uz3XSHC8irvzdkS8i8tVLYUnl4paJRDpliPW/yCQWNQOQFiLbCP8rn6YV0zhwXC3hCtlg9wmqmay5N6D+cfRNy2qAUWoYgLFeeAhmsqicmW7FW8rZUVuxBBFuwDTINxvL6maf3KsvTKQ356Ioo2ii5ekaCmmaMTIreq9TgOYvoEDiE1+Oavz9H4dkgRfbpp9kEzY1LcuSGJUqQ872EuKjRaob/D9X5P5eYT/jxH23JoSYkmly4Jt07EYskEKLVC354K1pOs2OnOWXJWOigXlhuWG8q54m1VVGPogLaLDdC1aIyAzdTv4Uq+rMlS548XPRwWFI954aq8xsJ41fYXn88jdTKOHgZo8dJNznGwNBXU0JDtzKAt4OgkJL2yASzW5H0438P9dQ6LKCpkbyzdeN0oxRBvrNA44wNGB84onrsYLp3yq32V0n/ziBeoXIbn0xujITz7AemKY68XNdEzVij5BxP5R0NmUsZD5bKPvDZEY6TRSiFoqvf8EQxChujpW7a5GuCZJpsKdAXDW6pr6gdlxpKCtjDU3GMNAjph2KzmrxtWQ4irV455SaFPNn3+IlQnxv6uQVuo+AbPfaDpKBah7FBca8RDzYym5QxaGyNlACLaO20BmEnxAePO/YCaLFLlsXDqPZjnNApUSOtCQWNuywVF6xeqQIJbZbYPGcbBF0q+RQf1RnnIxvFL1aj2yEMpDRQcfSBzDCMzpeFphXUSXpbxmJCvCpJ4hCCsJBYMp960I7nCAom2550/BqPywj8nuyoqp/K6sqn8raqEIX/RyQboHy07XlE6YJrQdE5ntEdrqlopcZsrUw8+rgTNF0p3VS2q6h8zJCtaE+fBRilJIOmx7xesflz5NMrmJ+vDh/aYJyQny/iFBPmVVIcy4jmnqjJudeYugWQfIfkMm7TIRjWeaWhdcMcdbamLvLXMPxnWqtfIQkOa4i6slv6v5lGyWtOYRhh+ctP9vhiH9gSEbi4fs89Zh1w31cUcHWQszvK3oIVnSxi89RdNuKEQcU0nEu/w96Qs1RtjD6TfWDQO/gPlxEHNDMOavNe26V9ZMo/ZA09XCpl0vxK9hA0SjKIrgRejoBc2tzJQD2DlXaNGraAITQPJk1X6VME+81CYrkUsehf1tEUZLOKEq5jnqfqPb+AJ4HIZFyjZniaR1enptW5OS90/IS+LAsfjZy0vPYqVZH5vsp7D3Jy8kavHSAd+0MsXqlbmsLFtGhcA7ebrOAlh5bGiX+CVo4DtFqtInmO5Wkw3ppq2F+tiVS6HUMJjCWhix/kPKv5kDKXaYIxcyQgVNFHjTGL9yUvPuqrAaM96JNwL9gn72O3K3OK4Ll6meO4/yuJLcpxQgCPiOZA7s0wRgcShv9NYDXtAahm8d1HoIkGI/PpvQ0CKh2DbM3TmplA+6oY2/agZcGcEVQajJjxMS59hJUtFqPyqDAfBT2NZ+YtTv46tfHl9GVY5MYj/r14YiGl793fV6zowkwgigtwD6Mzx0G4pcrrxBfWwFzUaPahuv1+KpRYym040QsNQuS0zLwdAOZBVCtQdbxpvk1JHoXweUDWajeNjYYyCsgZZeAJEHFjniGzSRMgpxQth85JH6k5o3lkkzXf5avvYZG9KTjBr3ap4ILfPh3ZqpgN7zCtHffb7y7rx0oZeadavY1Y0Tgj/mA/vF69BTdCtebRtvyb+5PTjFhLOlF+HDGmhu7T8WU62AJJnaMw9nEVlcs94BinKl4j4kpiTlc/ZEdxDMNqaUxJKwEKFOYfyjX6ssll0AVvHViRDKy6C05YDtohc2LRtzMa86J7aOqgIget4Qm5gnOtzWXrCwPxI84YF6ziNg/SVN2wt+PyGyFah9DM36jWzjcMffEG2DoKLK8+vUXJeGVk1ZuniWGbpWAD0hVdWm3prNWyFoLc6rzxc6pOQzUp/RL2tltX4nJE6WS3aCvVbL00LOeYhc/Vfp9jEEcgMwHH7VUWSQuL7KeFbxgfCCB8B+Tf1OuR3S3EY8to5twKK63U17mDdE29qIocREI46AZnC0QXJCvZrIY0ralkcXr6gZqyOHLR7psQOan1d+bgLqPOesaCdzcQHymxJHHe/ITKWKxeeHIQ/AsLM6Sy1AQ5l7NIpQQLrrmmAqrd/2q9IZr2Mw8oLOGtUJYDrCEp82Fr0x7eplvqF4tZx4tfcCp4eDM8nw5rnCfoX4+4tJ8MGpel3m4FrPWekbkFqHkUENNqLhDyvDEWrNuNcFjxuk1OYkpa9r16JPnjPQi82RS+i39Im6nhQxgQzBhp8/KgZD7/U1kQ0TPnI2U9WDNfKdpgOW3vQoKRvMbnjQQBt6bxsRY38YuN65nE/8TJxSln0m0VcIhmQi/35zDYw8mb4QdMUW0iiXnaGGo2qIZCZLArmukNSXR/ZFq1oVNCmdeAGzxi12bHynQjT4Dz3R3n7PC6/Xm9s8eszj/u8RpXRMcAS0RvGvcvp+EqShJiEfZrDOpC/1jzQGMzDitLtTqJtpBfHTdIhZsrJBrCyAEmsriPF2d4pIZ3l+4TNLZn4SjGfRNcCCaWMCKMqNhmi/XtkstfoOCPCBNdixSOTvJ3ULu2BNN23PmDwAhC3P8qjLi4XgwkDOG3p4FYAd1T7HBeX3roRgFqMOCFsYC+UQwaMlHIpjQd/VHuTZcQJaunulebGtGWCI8uOnW06RACAWEzZk9mmi+OaIPW1VMRT1JxDoo988cWohzAGUadsCFfNIIqlyfIezsT/AKUT5ZKyWDfm0m7WY4naMcGYj3q0scv/C2ytgOJ6fa6zxM/RIj8gNa2Q2hOOqvOjAbKoRqdE7vbIV5pThQUZPS6ecN7amzkiq9PCyiFt0DZkseRrrahGjo18fkacYnjEBsD7WeREBQV8drhihRKXJYTRXk32d+Eg1lvI7HqWnAzLEoYggT+umORkiaHlDjnz8iWGTAXub+SxO5Xnek6Z7ioP87RAw8kvXG2Uf/yil2vAIxgsiWyriS9dDOUFD5jl0q9kXBnxuEIfY6Sj7VMIiw3/sbio7j4g3ub4nbD77weSAbF4hDnA9Lhwqs/s4/viRb6qHjJbDDcCgw5emEHlFYh6YBgeauLY1i5bAV8wfeaEN/obItgMgQFTHv4n3r4wnvoWgn4rHtaTQIHMTchit8AmjxldQ4LB/zcN5nbvg7/eS0go9M/wF2JpRm2nxNrHugg8WZFABMwRXykiJ5INaKyTzxGdfzeBBxBd1zsuVjPH5NimTzd9SrmVgD6Xz2yARMinQfzr0gIM/haq0JftiAbMC/SDcGAWxAkns7dwjtRy8a3A7AMsmvQ307tQRr4wgaEMoE/GEoR0zTF3ux2bYR6gGt+jY95JCf3zOiP6Apg1fo0BL6DQ+JfdJM11D18ZVhEUrnyJAGweXDrU8P8usSQxABOiHyE5Lor6FDItbAMe4BG84QzAUo1wLZ2eHU/5x8PHTFCjPLpq1BvsxetKwfDP64iy2j2rFazoko5TNvrqH6MbppzwlzEpxAY9gNA8QhIKvXuWuGkB3jax06fq7MR7HRBw48YF4caMb5eH9BvLpsjiZsc+bI/KLiWEtbLQb1hc8lwQeuDRhm1BL1c0n8CeVG3l030WzQD/AJIGWF9ndA1AA2iTxlTIhMsf45u4pwXJPeQCMbaZRZfT4bohX5crsjSki9y0v+SXCWfVRpP8zXSldTtMzOh0BYlozy66aSY4qlFhMX4alhakmZa0zRY6EdFy5f2YytrCBmzMu0/bjj/GZd06y1ptL7VRxZLfbCGSkS2p9nFS0r3PJQJPk2usr2fJTJp/kxkM8MjwyZHvcjrwYTDfBGT3IWamRl8w91kC5CGpX/WT2PfN68WD4OtVy/CDPek6ngoiHfcex7RLxFojiZpln354oVP43F7LN+DkXSCiy1ouRvhRdxewL7W5NYKSXs2DN8+BvIeirADMJlvms/22TYDHHXfKWMXbkkd7/6XBx9m4UWZsBuUxAwQxjb6V6jplNQXtDAPNf6EgvmytRF8a/7iCMwkMJ7aofhzAJoy+0bF5AJ8TkG1A3JAdvaaLlElml7j/fyJpHxoI/Xx0Eeq9WxA0xBcmhthnUcyelzxYdJfwxWuIMWDnYyW8kv+OB1c2ACoJOAWnEZgFAgh/u+hwSe5KuqFK2LxrMmgzfIB7/GSDMdX2Fb0Y3j8S1ERZvka1tpG+W9rsmXRmxu3UA+/BVM5cjziX8WAw0bOtL9xzzhmOx8hlsz1z+mD8C8TigiYBy70cwVbv9O2sL7+whWm2rbRZX652xN6Chi2KDDCjR/rcMDVQYCX6XB/L19XKrpdRkzYmPsizKizuMvPEncd6/IVrECnkBKcosg1Cjkdar1HwrqZIMyDl+2jQeMDaks5ed2HMxm1aFSdti6LcZCqQyKJ7yl+xpZ9LoOCw3ekJHA+GfWshfty7hs0KxIOTCQC6YB5Z26qk0kOdtQSCh15V7fug149SAeIGjbBR1v3ENHirvvEwkHXvpIOelvCwo27uiL59bkJaN0mGupakgU30fLbQ2KoBFXC8myj8umMyk72G3sPG7r2uWl8wcCxxwJusKaxSCqM5SQHE992ZpCVpCOekaHGuBK3mGwnRzF2BIScEWxCbOMTISjDqTuRXLJJbzinJX3FBdL5Zbt++Ab/vGoklwSyxvk7/3iIWzisFcD70IAxy7Rs+5OYx2cmHZAWtMGHXgNG3/Q2JDPnIaM1t2q+Z86O0M/X2DHYf6XIAjDT0Z3WBSeEStzQ8dsvuCuaPRCVnGuBT6g3dwh3XBaYz+eLDuBFa6yyYDI7k3lCCt6+JMs0sZZcw5nShk2El7dMBdf3+ZYoH7PtCriABEIAYb/+qC0mnORfe0kiIqZO5+3OXu2RceWw/5oMT6vdZj5lZwcu/D65Y21LVr+p/3T9Kk2UxxJ1C9H1oiHoUvwScXlzGxn0YoUxdMOtccImx4BvlXtZnWtT78ePfZ8FpS5B9AAz45+032tSFnqfwSv583n29xlDa53/14u34m9vPQI+v4j9v5sE9pzDK3mQnEWXZcbFG+PkUig0/heXo+o6LH3kuJvyiYfnn0yxHLtGY9rBX74TsBF4Zwcpt3yESidmEgkAZV6NXUO64ZoWWM6uh7rIpH1q9PronkTV18UU+8QGyf3wGdgSFM1flz43+OcRmClv0peloYIzABWo/X0E4WhWvr1Hw7RMRS8kXncrG/HDG7dJWdYo+amnyJQX8yUvYZBmlrgcWJPsdLMwALNYCZ8ejpiA2o/cVd68kaDP5dC+813dVt4hjAOU5CLgn9ZfHIMSDLUnhLfj8EOpZFUbWlcRSL2dGFltBs4TCpjteEppIuCgjRd1h7Cf1n89om1TX+VkmHj6lfxZTecg9K0t5KwGHjeQJ+bmWjVn8THuQ6YFURIw7PM+QVOJvyhVFN90vW/HjSPdsJXZ9FYjdLpkcLwvwcrsNBWkZ+GWbuf0Vd67Epuurh/FJrtcfF9dZSLw7cK18eKlmdIicECgtNpRhNSKWjlMNO0T1XnYXjElk0NFez5hVe4eLzrKRTplcxWZqNyFgr1RyOekfY+JLNw4kWSAfaBGyy/kB30A2i8G1L2z6HqbWwmXyrMar8IBkBDIEtGxW7ONduBw189gaKeRDRjkprIut1MVSbxN8HLcA1JB9ZX4xnDYKZEpRVHA8ITO22KDKeVAiDhMPmNuKlyQnDK9oJrN9xZ5KNaffviLXN4P17W5PnyNpWPLCxn6DOMUVpuQT7dU7BbxcLgCsWqHrsI9zM0Gb2TYBCRkAFdcbAPsQILtavvw1LLT77gHFbHr2ZWurN4jYtSoc27ZCTVNrFzazlhDIAOW0prTXLDD18kxuTLr6fRl0hXtO5LHnr6icz+7Yl5E5HzEzcfAykSYCsNdP5lKHECMvdzVdMJaiTWOLq/Y4QeH82nY28iTj6orHZbqVic1JrEfyl+sHcQsRCL4vAJqQgGIkd3kURMRMq1lT5AyrQooZZpM8iCReSTFAQnwOTjlbAUV97lKcZvZQeUgZF/swfVrZRw6lJcjXJWOJdYm5inULY9KGcVETSe3TGs3+RMQL5yrIll5oNemTCW1S50tye/oMIwC5UrRGke7WsZxrg36L22asSePrbuInkmzp7+92/MiKq+p6JZBqu8Fs+4qzerK/EnpHyZiD1uj8MfZZb10j0lQSktX3xD1ycq9dITEEeDw85zcnOafQxXQbg4D5/kMON4TpGmi9m6s+8Vgs2iLW8PJ2q2e6Yl61pm12dym+3NFJxhSeQXNjurNUlKNTNtbmFiPMabc6qQqJTEMRj/N5eoiEG3ZWdRBS+fvyew/O5qK5nFJeVmFCrbL1mmC0rVOikR73TVc/62WtLob6Y9kBP4PtlBPLZirlufuTPavjSWrNNFcT6zf2Mr1T6pdkoT08hoUx+iVV1kfxM4gTD5VNd2+VPH7WuGbbmUABD6CiDhWM1s/C2CNlLCk5QDJp19s6a+Ma+77abKNHvyxDeElMzm4TQmLMit5h4Nk500LPvNmrWJIeCaA1YYapCM1Ev/QiphNMYmc/ve1aj1Ij0pCKMVE9RWKfSGKoZYtPb/lxfw07WIuN8KNjo7dWWG9eRqLySWVtV7UorA2tXl3K1cGRNxAEkF3ryWrcDCaiipyBTNwehMh0b7KHBtkbaNQZy13VeOK5xoqkm6GFL/SCxwY1sqRy+nhqZBzQQnw1TGU0eLYGED0heihpnPCVH8yp6sx9MK+NlonqVJDkvY+oF5aeor+BXPWpUknCVGfz9HpVzDrnsN7rFBuYXJUdzqWC5A1h0o5LRQdweTtFt7FIfWEWWAQJNoTlVUJpXL1or4EU5u1kRL7f7pQ0V1hZnpjLdbsSTQUByOIV2zzYvnuKLJ0HlKfOepFppHVbqIE4zanQy39yFJY2jVjtHmdul8ws9dKRJLpx1HSq8tY9euqvAJdKpiauQls8sYN8yzk9o002SgFfEKWnAuDLN2kNn3C9Zz0pXub5kWxBe3gXs3fpB7Q7Sul70rsQsf2JxprvKyAyP9BFXkDpQtu9rMevz5A6dIRc+VlT7p9TvLvKpFaVEpA20St8kEVzygjmj1ysp6IO30W9NHPHejFamCUz6woKSxmwUU8qQjr/+n+7ur+IHyPoVDaEPkxHVmejj/FhDJ51ywoVOiDmBI/O6m1Ghkp7Tl2PA646D/S62zBpCexurjdup5He5a39icbErP0cyY7y/XeKFzyJqV4ph59MwaNpkQiEVq637WvsIUr05g8FsDl7N+tjsxt4EUVwPTC/QJIB5EdtfyD9kOUPyMfPhuQPzHRO4ijiUPOR7kpmgYVOYbzU0xB5cfJUBiy4PYsD4DkMirwoQdtOZRBHKnvu3I4mAKslbn03qwbn66nGqV2Bg9AG1GdheG6Z/IxdiVQxMvKT0oxyjLOUXEvSrO5+CRig1/eF5K6tFWGgbPjOIWs29OJjpxva2NVw63/y9+6+o4dHU35TD69j4+x4a9o9bYv9Ul+fFvitH/jwiYOMFNj+WAICsTgmoBwe6quPc8OLLNnYt1vzfT0InXjdI6uA028thtHmHVpvEs4tiCQ84u0aV71fNqvwuENPg8dhQ7LBAW08c0vEOl9Zca/YvHXv6G0c/pcKwIIXP3J48bJeUCOVhABcSjuFjfs3sBIWcqmizOkiYcCc21vcC6iPHWWylkiFEO4w+AJwMKA7hxLM6V5g5wRnvzxl/tAPNKSfk9t0iryugQU/1ARAILmXCpfYhqfPh30GAymvHnxukr5kYFP7NsSrmhM+umoXf/TuPLyFgjaV1iPANXvDDjV0pwTmlWiMR7/koGD22mLWadRq0ZtEgiDKXGnm0VZ+9UkCATX4KmF7FtGhyVlr36f+6/5Rlc0j6Y+xSfoygpg+++M+v8S+DO2dtZ5yzZ3PmyrMyK1/ueOXgcH3pYeO64wu6oVQnLwysGx9ZeLmnn3Zzj5KVhzLRuEIEEhwwWQZNutGigYM1HcOnHuEduFg+WzarZ4wgG1F2Ciq7764gK7iAmZHxWL7qvUtT27luOO/J2dK7U6fn8rlxynwpwusspT/Etm/DXNXvdCHPXS12uI5clwwamsd7n578ljcKKU8UAFigylWadt6dGsDOApr43uejpubdjCIbT0Rmx3syns1AMa4+8k/6X3N5I2lvmW/bt686QS6lzjI7F9mqa7gWXKT8wieD8Rn5Dqjstb0boloQv9iXxeWh8hMP4I2Ki6L/RJ9zRWt30rakjY2vmZ/2v4MlSJT+1GZarXdyHuNtF7Q+RB2EzCbypEBO9qR49n0CLXkeKZ+mt3IKTW2TeGrrrQkoC7ABJhXK8USr8H0MCmf/YBXY148trOD9JsNqZhVWC/R74Bmkz1PNZ1IFGe5WrQuTCWWviOcSyEzFLKp2eRR73jTZWQLBRZ7Fh6ilggwzGZKwKu2VEC6U9kQHgeSNUsJWuxb8MFbf1CmbL9dwIZ40j+bXaFNi1amEvugCw1jXaGFwT8SQ1cgB/+WwZs/TXHG4j37Y8xwKPy90IK9aVi0h0yStNgPu61LBmlBkrRNWGSwmwB/lFu4VY4KWqZxxNC8iZ5oY+bU444y88ESPYo2igprm2jQSyJP10EzT2exhZOldbM2kaacd9Szpdk3YaGWnWjuwX6PmKfPUjs1IXxrzcQ9EWL3roisdN+wWTIHKdfcwptRgwXXxhz1zq9Oa2OJGuJqIywJiAItrt8/8/MmaRN4PSFYdZQtv902K2TvCpTt+jynQ11QMkqUzeLZuoWZ2JU7SeBW+X3fHX5/Afo+1oHow824CgmlCp6pdhDekYDNDn1B3vFA7Wae2Zbndpq0C8eduTZcnQNi3oXf153PWdLw1SFu0NtsWyCIbrFCYiSiuozQj4kfpSgo/vMW1uK72fNzv81kdmN9TjOC79Xc/BjL72EW5pfZ/H6bzS90fdSfeqtn3WuK3sJ5YqZnAle8KrxTp4blsFPaOBPKg0tiny2G0d5luDyGgUcht8D8diGt7mDn9t1D33S+BHCaIbLxl97oPBMQLqNiqOXAjsvuq194+X4QV3KGdpmI3+8NGCgVF+OrvB2cWH3XKot8BXUpfEXDIm+2scitt5zeNtlH37KY71YWY7M3ut6ggzDid/eBNyBd+3OAG2vVCgDRmoXwQv/c33vGGHaS8YEZze8LEOG3Lr73XIvCkifKGZAKmwC01EGSaRAmonHrAQtRId62VTe45zMkeiiFcolQlvrZEIgWacsjcOdOcmFaZ3aU7MxrMoxnzo/1mjmU6/BB5UKexRmi5W4Iiz10/dJnrByK1AbqcF0Tdw1Jp0vqu/GVvqPdaE+UIvnFX1bSH2JzerPMjiXvAQ3mVvPw6X7R7N479mNsZ1zQB/jL4Yfu96VjnH8w0WQQcPtfx3Kdefn+upR92a7km8R8vXuMoMADzELEPp7JeGRuh3Hrs4TOrUNn6G3dovSKAusZU5/llptwgKmnxWkyMg4YyGWhlmKby327y+4WXPfZs2Rbt6YC2Zlz6PC8OETTjZLI2W/owYHMaOlNcKkS0YRB4xDOI+qtbGN9VWT1ASxeZg3GGksWu7u3HHAn7qut6QsONnq+/Ov/Mdu1H0Mk06HFyyhBZR9zc4hno887/UimG+qsODCW7IPLfuR9yhL3DlBbr8RDwnFylGMiTbF76M47Y0t8151VD4D4u9oyiMZ+aGU3rW0hxrtIgW1yCCQ3omVondvxOrPHvczbG94bdMT3zX7kWrubvRaeKKm1RbMPLfRuzN53jVyhKxFPHrYbD7my6OSdnlxpPGQrOWFBwz0llsFd0jFQuDSGpbu31I8B6Xr8cHg/yQTXmT4vr1CZWskcRYKPbKGqPnQyM2U4bw0OaNo+qyfRBLjG5Sbjq0nELbUIP2mGt65WSlA9Ysmne8r5AY/5cNnWVKsGL2pq9gOL5hSJnbPWJMP84SFdbHGTksWxNA9DNLsgvJjRauxtoP7ol1mgMfgEhOf9ZWQZceGdWLcLtZ+vPUemotyBRZCPWh6DONI9dKdrLOwWMeLX9YjDyBTk1pY6npd87DaSZa1kUO4nxza8xzmZyBZGNYnRo/iJpAsMWw1ajTEQAPd/Xw8GENCL78v4fDIcKY42XMVQ2NHMZ2HEq7PgGvGGPvSah9B02Hhbj/vtRrmWOt45ZhEeVDUBwcyUV2HxRILc/dODs//J/prpfUTWTBn0idqnCD5h1ser+PpxP45CboAjSiBrod2oVGx2O+QG/BCvhOP3kfBvOKgGIn+eY82A86Mo5oyEJ7Z17t4oMDaTSc45CvZ53xj6JNiuoLoIGWavU4ifVS5n8rcP160R3idx00EXkEhJBTI4ymQ7wcfoJVevy/eY7dlJVgPdPSrrLULXR0uA7fBbZ5PnfFuslRxYpXAr3Ugq+m08LLk9N3itDnrGQwKEnQ7AeRhwXf52vROjOsTn+A5vRkOJN2dCNlVlKGDUfWKWzgjHur7qFleg8E04V7evQG/q/EA0UVdCxC9KC+e1fL3kXhNnXvK3HfiYonPm5aywMLyNlaQ/0K8DTWXrzgwsw6HU93Zy/npH6nAUFKr1vlwMLYj/CElMC3TgNpw61pBfRdXgQWum0gIcd5vrDqacjgqPlgiAZMEeeZXdwKooRynG36C5gCq4xyX53LKMHPwxwcEOit0QrGXqOJsm7X7WT9KiivdDUWDUvIPGaD+PpenCooFpiFKYzc2pdyhs+Xjlh/0AxCB/1Znn0t/DD4GjHqX3Mbz0G2bxqv4X0nZZd8gmLwkXpAtTO1V/a2ZRQLoufwv1L23zoIcPuJobBOEGQ4hWAeNDSMs1wveptQf8ZTbbhjOBsJ3Ys+5lMXCRHqYXeewRbX1oXepXMe+6BbxXVolKg1eJSIi2s21XvHavsGdsHe9j/L16ITZTIrl/tbvihG4m86uPyQSFaSsyQ444W8APrUJ49l1SvlSrU3CawJk8XbAc+vo+UN/3/DLolmmxU2KJnF0Fs/7EFCCOv+y3aXZwuuwHRJQXgO7kj7El/gfZoo3TieeRJk+Yr+3C6zlTuHDCFusAe65OKpyFu1yjMM/hM/9/6oCB+vMEIE3uv5g14EX4b2GX1wCvb/V9680P2f+VZ+G1AF1cGtWfPtPWd+OH8z3B/6v5RNTtq8dsNTzQRhc1WiCoOkMEgAEyDbAKKp/y0fUutAhjrRkfLUTYo7YKKIiqTPtY5gnGU2JMGE9I+OWIMUh9dGy+BIa5zpUj2k91YTMUiTjWi69mnujjmgpGMpZ19PooKKgVSiTnE9OiXDNhiT7xeyIkvxf55BkYlhytfTmHkP4NqxYEayQCQBR7siBrWBRdtzxqHozZxXq1uwHC+jpji68/V0KEl0/q1id8xOYYYgevjG07evhK83FDrfNl+kC/jLFp5eooiq5odDImbKrLVZ7PCLlSG0r8asCeiUCU1EBsNnkaxoYI5/L/x6tYPjH1ILoU1cDQ0KUIGUzzfFaqLa6eztCuaPyAXjVEStzjs/dX3tZbJpcMbP3/f0P8zg+sfHjwwMynHpcd0uC9fppGwxRXq3lMq1IIUkfDVQ3sRTMQXdejlo+5Of/2zVr1wWDZDtgAmJ+GlDZ+GhE6+WnM76xIOD/NsOKNmyWTMpiUZSt2rZk1bcYGSm+cAeVk5xBgSV4ZOrkSVSq/ZN3kHk+VTbpJDGdtjPhNKxbirOa5OfnETVs0atYCq3HLFhnkjFqwaNOEHCFKtZk07VpIz1qj5dx1k4uHXUirFmWZ1j6yuSx0Ddesj59ftoSuaiYZbxhnauuCw5CBOSjPO3YbprTji3Jlb0qUSsvosr9bVtOiIqOqw2AbC82XmwA=") format("woff2");
+  font-display:block;
+}
+
+:root{
+  --bg:#191b22; --bg2:#20232d; --panel:#242834; --grid:rgba(255,255,255,.028);
+  --ink:#f3efe4; --muted:#8b909d; --accent:#f0a437; --accent-dim:#7a5a1f;
+  --green:#5fbf7a; --blue:#6db6ff;
+
+  --c-var:#8f5fd4;   --c-var-t:#fff;
+  --c-op:#cf4a3a;    --c-op-t:#fff;
+  --c-func:#d99a3e;  --c-func-t:#2a2116;
+  --c-kw:#3f83d6;    --c-kw-t:#fff;
+  --c-tag:#2fa58c;   --c-tag-t:#08221d;
+  --c-str:#c4c8d1;   --c-str-t:#22252e;
+  --c-strq:#e6c341;  --c-strq-t:#332a08;
+  --c-punct:#5f6572; --c-punct-t:#e8ebf0;
+  --c-go:#41a6c4;    --c-go-t:#04222b;
+
+  --pixel:polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Galmuri11",monospace; background:var(--bg); color:var(--ink);
+  overflow:hidden; -webkit-font-smoothing:none; font-smooth:never;
+  image-rendering:pixelated; letter-spacing:.3px;
+}
+
+#stage{
+  position:fixed; inset:0; cursor:pointer;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--bg2), var(--bg) 62%),
+    repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 44px);
+}
+#stage::after{content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 220px 40px rgba(0,0,0,.55)}
+
+.slide{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:flex-start; padding:6vh 8vw 12vh; gap:22px}
+.slide.active{display:flex}
+
+.eyebrow{color:var(--accent); font-size:clamp(13px,1.6vw,20px); letter-spacing:3px}
+.eyebrow .sq{display:inline-block;width:.55em;height:.55em;background:var(--accent);margin-right:.5em;transform:translateY(-.1em)}
+
+h1{font-size:clamp(34px,6.4vw,84px); line-height:1.06; font-weight:400; text-shadow:4px 4px 0 rgba(0,0,0,.45)}
+h1 .hl{color:var(--accent)}
+h2{font-size:clamp(24px,4.4vw,56px); line-height:1.1; font-weight:400; text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.sub{color:var(--muted); font-size:clamp(15px,2.2vw,28px); line-height:1.35; max-width:36ch}
+.lead{font-size:clamp(17px,2.6vw,33px); line-height:1.4; max-width:32ch}
+.big{font-size:clamp(23px,3.9vw,50px); line-height:1.25}
+.big .hl{color:var(--accent)} .big .warn{color:var(--c-op)} .big .grn{color:var(--green)}
+
+[data-step]{opacity:0; transform:translateY(16px); transition:opacity .4s ease, transform .4s ease}
+[data-step].reveal{opacity:1; transform:none}
+
+.rows{display:flex; flex-direction:column; gap:14px; width:100%}
+.anatomy-cap{display:flex; flex-direction:column; gap:14px; width:100%; margin-top:6px}
+.row{display:flex; align-items:flex-start; gap:16px; font-size:clamp(15px,2.2vw,30px); line-height:1.3}
+.row .mk{color:var(--accent); flex:none} .row .mk.ok{color:var(--green)}
+.row small{color:var(--muted); font-size:.8em}
+.num{flex:none; display:inline-flex; align-items:center; justify-content:center; width:1.7em; height:1.7em; background:var(--c-var); color:#fff; clip-path:var(--pixel); box-shadow:inset 5px 5px 0 rgba(255,255,255,.28),inset -5px -5px 0 rgba(0,0,0,.3); font-size:.8em}
+.vtag{flex:none; display:inline-flex; align-items:center; justify-content:center; min-width:3.2em; padding:.35em .6em; clip-path:var(--pixel); font-size:.72em; box-shadow:inset 5px 5px 0 rgba(255,255,255,.22),inset -5px -5px 0 rgba(0,0,0,.32); text-shadow:2px 2px 0 rgba(0,0,0,.25)}
+
+.panel{background:var(--panel); clip-path:var(--pixel); padding:20px 24px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.05),inset -6px -6px 0 rgba(0,0,0,.35); font-size:clamp(15px,2.2vw,28px); line-height:1.35}
+.panel.accent{color:var(--accent)}
+.panel .cap{color:var(--muted); font-size:.7em; display:block; margin-bottom:.4em; letter-spacing:2px}
+.panel .big-num{font-size:clamp(38px,6.5vw,84px); color:var(--accent); display:block; line-height:1; margin-bottom:.15em}
+
+/* grids */
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px; width:100%}
+.langgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px 26px; width:100%}
+.card{background:var(--panel); clip-path:var(--pixel); padding:18px 22px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.05),inset -6px -6px 0 rgba(0,0,0,.38)}
+.card .co{font-size:clamp(18px,2.6vw,32px); display:flex; align-items:center; gap:12px; margin-bottom:8px}
+.card .fact{color:var(--muted); font-size:clamp(13px,1.8vw,22px); line-height:1.3}
+.card .fact b{color:var(--ink)}
+
+/* blocos lego */
+.code-line{display:flex; flex-wrap:wrap; align-items:center; gap:10px; opacity:1 !important; transform:none !important; margin:4px 0}
+.blk-wrap{filter:drop-shadow(0 6px 0 rgba(0,0,0,.5))}
+.blk{display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; font-size:clamp(18px,2.7vw,36px); color:#fff; clip-path:var(--pixel);
+  box-shadow:inset 6px 6px 0 rgba(255,255,255,.30),inset -6px -6px 0 rgba(0,0,0,.34); text-shadow:2px 2px 0 rgba(0,0,0,.32);
+  opacity:0; transform:translateY(-22px) scale(.94)}
+.code-line.reveal .blk{animation:drop .34s cubic-bezier(.2,.9,.25,1.15) both; animation-delay:calc(var(--i,0)*70ms)}
+@keyframes drop{0%{opacity:0;transform:translateY(-22px) scale(.94)} 62%{opacity:1;transform:translateY(3px) scale(1.01)} 100%{opacity:1;transform:translateY(0) scale(1)}}
+.blk-var{background:var(--c-var);color:var(--c-var-t)}
+.blk-op{background:var(--c-op);color:var(--c-op-t)}
+.blk-func{background:var(--c-func);color:var(--c-func-t);text-shadow:2px 2px 0 rgba(255,255,255,.2)}
+.blk-kw{background:var(--c-kw);color:var(--c-kw-t)}
+.blk-tag{background:var(--c-tag);color:var(--c-tag-t);text-shadow:2px 2px 0 rgba(255,255,255,.18)}
+.blk-str{background:var(--c-str);color:var(--c-str-t);text-shadow:2px 2px 0 rgba(255,255,255,.35)}
+.blk-strq{background:var(--c-strq);color:var(--c-strq-t);text-shadow:2px 2px 0 rgba(255,255,255,.25)}
+.blk-punct{background:var(--c-punct);color:var(--c-punct-t)}
+.chip{display:inline-flex;opacity:1;transform:none;padding:6px 12px;font-size:.8em;flex:none}
+.chip[data-term]{cursor:pointer;position:relative;transition:transform .12s ease,box-shadow .12s ease}
+.chip[data-term]:hover{transform:translateY(-3px);box-shadow:inset 6px 6px 0 rgba(255,255,255,.30),inset -6px -6px 0 rgba(0,0,0,.34),0 4px 0 rgba(0,0,0,.35)}
+.chip[data-term]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.chip[data-term]::after{content:"?";position:absolute;top:-8px;right:-8px;width:1.3em;height:1.3em;border-radius:0;background:var(--accent);color:#241a05;font-size:.6em;display:flex;align-items:center;justify-content:center;clip-path:var(--pixel);box-shadow:0 2px 0 rgba(0,0,0,.4)}
+
+.panel:has(.info-ic){position:relative; padding-right:64px}
+.info-ic{position:absolute; top:14px; right:14px; width:1.6em; height:1.6em; display:flex; align-items:center; justify-content:center;
+  background:var(--accent); color:#241a05; font-size:.75em; cursor:pointer; clip-path:var(--pixel);
+  box-shadow:inset 4px 4px 0 rgba(255,255,255,.3),inset -4px -4px 0 rgba(0,0,0,.3); transition:transform .12s ease}
+.info-ic:hover{transform:translateY(-3px)}
+.info-ic:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+
+/* modal de termo */
+#termOverlay{position:fixed;inset:0;z-index:50;background:rgba(8,9,13,.72);display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .2s ease}
+#termOverlay.open{opacity:1;pointer-events:auto}
+#termModal{background:var(--panel);clip-path:var(--pixel);max-width:min(560px,92vw);max-height:80vh;overflow-y:auto;
+  padding:28px 30px;box-shadow:inset 6px 6px 0 rgba(255,255,255,.07),inset -8px -8px 0 rgba(0,0,0,.45),0 20px 0 rgba(0,0,0,.3);
+  transform:translateY(18px) scale(.97);transition:transform .22s cubic-bezier(.2,.9,.25,1.1);}
+#termOverlay.open #termModal{transform:none}
+#termModal .tm-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+#termModal .tm-chip{flex:none}
+#termModal .tm-title{font-size:clamp(20px,3vw,28px);color:var(--ink)}
+#termModal .tm-close{margin-left:auto;background:none;border:none;color:var(--muted);font-family:inherit;font-size:26px;cursor:pointer;width:36px;height:36px;line-height:1}
+#termModal .tm-close:hover{color:var(--accent)}
+#termModal .tm-body{font-size:clamp(15px,2vw,19px);line-height:1.55;color:#cdd2dc}
+#termModal .tm-body p{margin-bottom:12px}
+#termModal .tm-body .tm-example{margin-top:6px}
+#termModal .tm-body b{color:#fff}
+
+.output{display:inline-flex; flex-direction:column; gap:8px; background:#0f1116; clip-path:var(--pixel); padding:18px 24px; font-size:clamp(16px,2.4vw,32px); box-shadow:inset 5px 5px 0 rgba(255,255,255,.04),inset -6px -6px 0 rgba(0,0,0,.5)}
+.output .bar{color:var(--muted); font-size:.62em; letter-spacing:2px}
+.output .val{color:var(--green)}
+
+/* botao copiar nos blocos de codigo */
+.output{position:relative; padding-right:84px !important}
+.copy-btn{position:absolute; top:8px; right:10px; z-index:2; border:none; cursor:pointer; font-family:inherit; font-size:12px; letter-spacing:1px;
+  padding:6px 10px; background:var(--panel); color:var(--ink); clip-path:var(--pixel);
+  box-shadow:inset 3px 3px 0 rgba(255,255,255,.08),inset -3px -3px 0 rgba(0,0,0,.4); transition:transform .08s ease, background .15s}
+.copy-btn:hover{background:var(--accent-dim)} .copy-btn:active{transform:translateY(2px)}
+.copy-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.copy-btn.done{background:var(--green); color:#08221d}
+
+/* diagrama cliente/servidor */
+.diagram{display:flex; align-items:center; gap:20px; flex-wrap:wrap; width:100%; font-size:clamp(14px,2vw,26px)}
+.node{background:var(--panel); clip-path:var(--pixel); padding:20px 26px; text-align:center; min-width:160px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.06),inset -6px -6px 0 rgba(0,0,0,.4)}
+.node .ic{font-size:1.4em; color:var(--accent); display:block; margin-bottom:6px}
+.arrows{display:flex; flex-direction:column; gap:14px; flex:1; min-width:180px}
+.arrow{display:flex; align-items:center; gap:10px; color:var(--muted)}
+.arrow .line{flex:1; height:6px; background:repeating-linear-gradient(90deg,var(--accent) 0 12px,transparent 12px 20px)}
+.arrow.back{flex-direction:row-reverse; color:var(--blue)}
+.arrow.back .line{background:repeating-linear-gradient(90deg,#3f83d6 0 12px,transparent 12px 20px)}
+.arrow .tip{color:var(--accent)} .arrow.back .tip{color:var(--blue)}
+.arrow .lbl{font-size:.8em; white-space:nowrap}
+
+.hint{color:var(--muted); font-size:clamp(14px,1.8vw,22px); letter-spacing:2px; animation:blink 1.2s steps(2) infinite}
+.hint .k{color:var(--accent)}
+@keyframes blink{50%{opacity:.25}}
+
+/* chrome */
+#bar{position:fixed; left:0; right:0; bottom:0; height:56px; display:flex; align-items:center; gap:16px; padding:0 18px; background:rgba(12,13,17,.75); border-top:2px solid rgba(255,255,255,.06); font-size:13px; letter-spacing:2px; color:var(--muted); z-index:20}
+#bar .brand{color:var(--ink)} #bar .brand b{color:var(--accent); font-weight:400}
+#prog{flex:1; height:10px; background:#0e0f14; clip-path:var(--pixel); box-shadow:inset 0 0 0 2px rgba(255,255,255,.05)}
+#prog i{display:block; height:100%; width:0; background:var(--accent); transition:width .35s ease}
+#count{color:var(--ink); min-width:70px; text-align:right}
+
+.navbtn{position:fixed; bottom:70px; z-index:20; width:64px; height:64px; border:none; cursor:pointer; background:var(--panel); color:var(--ink); font-family:inherit; font-size:30px; clip-path:var(--pixel); box-shadow:inset 6px 6px 0 rgba(255,255,255,.08),inset -6px -6px 0 rgba(0,0,0,.4); transition:transform .08s ease, background .15s}
+.navbtn:hover{background:#2e3342} .navbtn:active{transform:translateY(3px)} .navbtn:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+#prev{left:18px} #next{right:18px; background:var(--accent-dim)} #next:hover{background:#8f6a24}
+.fs{position:fixed; top:16px; right:18px; z-index:20; width:46px; height:46px; font-size:18px}
+
+@media (max-width:760px){
+  .slide{padding:5vh 6vw 14vh}
+  .navbtn{width:52px; height:52px; font-size:24px; bottom:66px}
+  .diagram{flex-direction:column; align-items:stretch}
+  .arrows{min-width:0}
+  .grid2,.langgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  [data-step],#prog i{transition:none}
+  .code-line.reveal .blk{animation:none; opacity:1; transform:none}
+  .blk{opacity:1; transform:none}
+  .hint{animation:none}
+}
+
+/* botao info + drawer de notas do professor */
+.info{position:fixed;top:70px;right:18px;z-index:22;width:46px;height:46px;font-size:24px}
+.info.active{background:var(--accent-dim)}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,88vw);background:var(--bg2);z-index:40;
+  transform:translateX(100%);transition:transform .32s cubic-bezier(.3,.8,.3,1);
+  display:flex;flex-direction:column;border-left:3px solid var(--accent);
+  box-shadow:-10px 0 0 rgba(0,0,0,.4), inset 6px 0 0 rgba(255,255,255,.05)}
+#drawer.open{transform:none}
+.notes-head{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:2px solid rgba(255,255,255,.08);flex:none}
+.nh-title{color:var(--accent);letter-spacing:2px;font-size:15px;flex:1}
+.nh-num{color:var(--muted);font-size:13px}
+#closeNotes{background:none;border:none;color:var(--ink);font-family:inherit;font-size:24px;cursor:pointer;width:34px;height:34px;line-height:1}
+#closeNotes:hover{color:var(--accent)}
+.notes-body{padding:20px 22px;overflow-y:auto;font-size:15px;line-height:1.55}
+.notes-body h4{color:var(--accent);font-size:12px;letter-spacing:2px;margin:20px 0 7px}
+.notes-body h4:first-child{margin-top:0}
+.notes-body p{margin-bottom:11px}
+.notes-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:11px}
+.notes-body li{display:flex;gap:9px;align-items:flex-start}
+.notes-body li::before{content:"\25B8";color:var(--accent);flex:none}
+.notes-body b{color:#fff}
+.notes-body .warn{color:#e78a70;background:rgba(207,74,58,.1);padding:9px 12px;clip-path:var(--pixel)}
+.notes-body .time{color:var(--muted);font-size:13px;letter-spacing:1px}
+.notes-body .say{color:#cdd2dc;font-style:normal;border-left:3px solid var(--accent-dim);padding-left:11px}
+
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>VEM SER DEV · BACKEND I</div>
+    <h1>Estrutura e<br>validações</h1>
+    <div class="sub" data-step="1">Hoje a gente guarda informação de verdade: conecta no banco, cria as tabelas e protege os segredos da aplicação.</div>
+    <div class="rows" data-step="2" style="margin-top:6px">
+      <div class="row"><span class="mk">▸</span><div>Ferramentas prontas: bibliotecas e o terminal (CLI)</div></div>
+      <div class="row"><span class="mk">▸</span><div>Conectando no banco e criando tabelas com migrations</div></div>
+      <div class="row"><span class="mk">▸</span><div>Protegendo segredos com variáveis de ambiente</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Retomar o fio da aula 1 (HTTP, rotas, JSON) e mostrar aonde isso vai: agora os dados realmente são guardados em um banco.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Lembre rapidamente: na aula passada a API só respondia um JSON fixo. Hoje ela vai guardar informação de verdade.</li><li>Essa turma nunca programou antes — vamos devagar nos conceitos novos (biblioteca, CLI, variável de ambiente) antes de ir pro código.</li></ul>
+<h4>TEMPO</h4><p class="time">~3 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>ANTES DE INSTALAR QUALQUER COISA</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O que é uma "biblioteca"?</h2>
+    <div class="sub" data-step="1" style="font-size:clamp(12px,1.7vw,19px);max-width:52ch">Biblioteca (ou "pacote") é um código pronto que outra pessoa já escreveu — a gente só usa, sem reinventar do zero.</div>
+    <div class="panel" data-step="2" style="font-size:clamp(11px,1.5vw,17px);padding:14px 18px"><span class="cap">PENSA ASSIM</span>Pra furar uma parede, você não inventa uma furadeira — compra uma pronta. Biblioteca é a "furadeira" de um problema que alguém já resolveu.</div>
+    <div class="rows" data-step="3" style="gap:8px">
+      <div class="row" style="font-size:clamp(12px,1.6vw,18px)"><span class="mk">▸</span><div>Rodar <code>npm install alguma-coisa</code> é baixar uma biblioteca pronta pro projeto.</div></div>
+      <div class="row" style="font-size:clamp(12px,1.6vw,18px)"><span class="mk">▸</span><div>O <b>Knex</b>, que vamos instalar já já, é uma biblioteca: alguém resolveu "conversar com o banco" — a gente só usa.</div></div>
+    </div>
+    <div class="lead" data-step="4" style="font-size:clamp(13px,1.9vw,22px)">A gente não reinventa a roda: usa a que já existe e foca no que é específico do nosso projeto.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Conceito fundacional — sem isso, "vamos instalar uma lib" não significa nada pra quem nunca programou.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Pergunte se alguém já usou um app que tem "plugins" ou "extensões" (ex.: extensão de navegador) — é a mesma ideia: alguém fez uma peça pronta que você encaixa.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>GUARDANDO DE VERDADE</div>
+    <h2>Por que um Query Builder?</h2>
+    <div class="sub" data-step="1">Dá pra mandar SQL puro pro banco. Mas montar essas strings na mão, à mão, é chato e arriscado.</div>
+    <div class="grid2" data-step="2">
+      <div class="panel"><span class="cap">SQL NA MÃO</span><span style="color:var(--c-op)">"INSERT INTO users (name, email)<br>VALUES ('"+name+"', '"+email+"')"</span><br><br>fácil de errar a sintaxe e abrir brecha pra SQL injection.</div>
+      <div class="panel"><span class="cap">COM KNEX</span><span style="color:var(--green)">knex('users').insert({ name, email })</span><br><br>é só JavaScript — o Knex monta o SQL certinho por baixo.</div>
+    </div>
+    <div class="lead" data-step="3">Query builder = escrever no banco em JS/TS, sem montar SQL na unha.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Justificar a ferramenta antes de instalar — Knex não é "mais uma lib", resolve um problema real (segurança + produtividade).</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Se perguntarem "é um ORM?": não — Knex é um query builder, mais próximo do SQL. Não mapeia objetos pra classes como Prisma/TypeORM.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>MÃO NA MASSA · TODO MUNDO JUNTO</div>
+    <h2>SQLite: o banco é um arquivo</h2>
+    <div class="sub" data-step="1" style="max-width:48ch">Nada de servidor, Docker, usuário ou senha. O banco inteiro mora num arquivo dentro do projeto: <b>db.sqlite</b>.</div>
+    <div class="grid2" data-step="2">
+      <div class="panel"><span class="cap">POSTGRES / MYSQL</span>Um programa separado, sempre ligado, com porta, usuário e senha.</div>
+      <div class="panel"><span class="cap">SQLITE</span>Um arquivo. Quem abre e escreve nele é a própria API.</div>
+    </div>
+    <div class="lead" data-step="3">Não instala nada no sistema, então funciona mesmo em PC sem <b>sudo</b>.</div>
+    <div class="panel accent" data-step="4" style="font-size:clamp(13px,1.8vw,22px)"><span class="cap">E O ARQUIVO?</span>O <b>db.sqlite</b> nasce sozinho na primeira vez que rodarmos a migration.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Apresentar o banco da aula sem precisar de Docker nem permissão de administrador.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>O SQL é praticamente o mesmo do Postgres. O que muda é onde o banco mora: num arquivo, não num servidor.</li><li>Se perguntarem "dá pra usar em produção?": dá pra muita coisa, mas sistema com muita gente escrevendo ao mesmo tempo costuma ir pra Postgres. Como usamos Knex, trocar depois é mudar a config, não o código.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>MÃO NA MASSA · TODO MUNDO JUNTO</div>
+    <h2>Instalando o Knex</h2>
+    <div class="output" data-step="1">
+      <span class="bar">▤ terminal</span>
+      <span class="val">npm install knex</span>
+      <span class="val">npm install better-sqlite3</span>
+    </div>
+    <div class="grid2" data-step="2">
+      <div class="panel"><span class="cap">KNEX</span>Monta o SQL pra você, escrevendo só JavaScript.</div>
+      <div class="panel"><span class="info-ic" data-term="driver" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Pra que serve o better-sqlite3?">i</span><span class="cap">BETTER-SQLITE3</span>Leva esse SQL até o arquivo do SQLite e traz a resposta.</div>
+    </div>
+    <div class="panel accent" data-step="3"><span class="info-ic" data-term="save" tabindex="0" role="button" aria-haspopup="dialog" aria-label="E o --save?">i</span><span class="cap">E O --SAVE?</span>Viu <b>npm install knex --save</b> em algum tutorial? Hoje não precisa, dá no mesmo.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Instalação ao vivo, junto com a turma, entendendo por que são dois pacotes.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Mostre o fluxo: código → knex → better-sqlite3 → arquivo db.sqlite. O knex funciona com vários bancos e não traz driver nenhum; por isso instalamos o better-sqlite3 separado.</li><li>Os dois vão em dependencies (sem -D): a API precisa deles pra rodar, não só pra desenvolver.</li><li>Nenhum dos dois precisa de sudo: tudo fica dentro do node_modules do projeto.</li><li>Se alguém tiver visto --save: era necessário até o npm 5 (2017). Hoje salvar no package.json já é o padrão.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li><b>Cannot find module 'better-sqlite3'</b>: instalaram o knex mas esqueceram o driver.</li><li>Instalação demorando com mensagens de <b>gyp</b>/<b>make</b>: não achou versão pronta pro Node daquela máquina e está compilando. Esperar terminar; se falhar, conferir a versão do Node (node -v) e usar uma LTS.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>FALANDO COM O TERMINAL</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O que é um "CLI"?</h2>
+    <div class="sub" data-step="1" style="font-size:clamp(12px,1.7vw,19px);max-width:54ch">CLI = <i>Command Line Interface</i> — um jeito de controlar um programa <b>digitando</b> comandos, em vez de clicar em botões.</div>
+    <div class="grid2" data-step="2" style="gap:14px">
+      <div class="panel" style="font-size:clamp(11px,1.5vw,17px);padding:14px 18px"><span class="cap">APP COM BOTÃO</span>Clica num ícone, preenche um formulário, aperta "OK".</div>
+      <div class="panel" style="font-size:clamp(11px,1.5vw,17px);padding:14px 18px"><span class="cap">CLI</span>Digita um comando no terminal, aperta Enter — executa na hora.</div>
+    </div>
+    <div class="lead" data-step="3" style="font-size:clamp(13px,1.9vw,22px)">Os comandos que já digitamos (<code>npm install</code>, <code>npm run dev</code>) são exatamente isso.</div>
+    <div class="sub" data-step="4" style="font-size:clamp(12px,1.7vw,19px);max-width:54ch">O Knex também tem seu CLI — um jeito de pedir "crie uma migration", "rode as migrations" etc.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Desmistificar o terminal — pra quem nunca programou, digitar comando parece "mágico" ou assustador.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Reforce: não tem perigo em digitar os comandos que a gente vai pedir — é só um jeito de "conversar" com o programa.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>A CONEXÃO</div>
+    <h2>Criando a conexão</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(10px,1.4vw,16px);padding:10px 16px">
+      <span class="bar">▤ src/config/database.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> knex, { type Knex } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"knex"</span></span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">export const</span> config: Knex.Config = {</span>
+      <span>&nbsp;&nbsp;client: <span style="color:var(--c-strq)">"better-sqlite3"</span>,</span>
+      <span>&nbsp;&nbsp;connection: { filename: <span style="color:var(--c-strq)">"./db.sqlite"</span> },</span>
+      <span>&nbsp;&nbsp;useNullAsDefault: <span style="color:var(--accent)">true</span>,</span>
+      <span>&nbsp;&nbsp;migrations: { directory: <span style="color:var(--c-strq)">"./src/shared/database/migrations"</span> },</span>
+      <span>}</span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">export const</span> connection = <span style="color:var(--c-func)">knex</span>(config)</span>
+    </div>
+    <div class="anatomy-cap" style="gap:3px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-op chip" data-term="importknex" tabindex="0" role="button" aria-haspopup="dialog">import</span><div>traz a função knex e o tipo Knex do pacote</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-op chip" data-term="exportconfig" tabindex="0" role="button" aria-haspopup="dialog">export const config</span><div>cria a “planta” e deixa outros arquivos usarem</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-strq chip" style="color:var(--c-strq-t)" data-term="driver" tabindex="0" role="button" aria-haspopup="dialog">client</span><div>qual banco estamos falando (e qual driver usar)</div></div>
+      <div class="row" data-step="5" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-var chip" data-term="filename" tabindex="0" role="button" aria-haspopup="dialog">filename</span><div>onde fica o arquivo do banco</div></div>
+      <div class="row" data-step="6" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-op chip" data-term="usenull" tabindex="0" role="button" aria-haspopup="dialog">useNullAsDefault</span><div>coluna sem valor no insert vira NULL</div></div>
+      <div class="row" data-step="7" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-func chip" data-term="migration" tabindex="0" role="button" aria-haspopup="dialog">migrations</span><div>onde o histórico de mudanças do banco mora</div></div>
+      <div class="row" data-step="8" style="font-size:clamp(11px,1.4vw,16px)"><span class="blk blk-func chip" data-term="connection" tabindex="0" role="button" aria-haspopup="dialog">export const connection</span><div>liga a planta e exporta a conexão pronta pra usar</div></div>
+    </div>
+    <div class="lead" data-step="9">O <code>config</code> é a "planta" de como conversar com o banco; o <code>connection</code> é a conexão construída a partir dela.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Material original do professor — caminho do banco hardcoded aqui de propósito, pra criar o gancho da aula (variáveis de ambiente) mais pra frente.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>O caminho "./db.sqlite" é relativo a onde o comando roda. Como sempre rodamos npm na raiz do projeto, o arquivo nasce ao lado do package.json.</li><li><b>useNullAsDefault: true</b>: o SQLite não aceita a palavra DEFAULT num insert. Sem isso, o Knex mostra um aviso amarelo no terminal. Não é erro, mas assusta.</li><li>Sem pool aqui: o SQLite é um arquivo, não um servidor com várias conexões.</li></ul>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>EXPONDO PRO CLI</div>
+    <h2>knexfile.ts</h2>
+    <div class="sub" data-step="1">O terminal (CLI do Knex) não lê direto o código da aplicação — ele procura um arquivo na raiz do projeto chamado <b>knexfile</b>.</div>
+    <div class="output" data-step="2">
+      <span class="bar">▤ knexfile.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> { config } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"./src/config/database.js"</span></span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">export default</span> config</span>
+    </div>
+    <div class="lead" data-step="3">Uma ponte: pega a config que já existe e entrega pro terminal.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Explicar por que precisamos de mais um arquivo — evitar que pareça redundante/burocrático sem motivo.</p>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>RODANDO COM TYPESCRIPT</div>
+    <h2>O script "knex"</h2>
+    <div class="sub" data-step="1">O Node não entende TypeScript sozinho. Criamos um atalho no <b>package.json</b> pra rodar o CLI do Knex através do TSX.</div>
+    <div class="output" data-step="2"><span class="bar">▤ package.json</span><span class="val">"knex": "tsx node_modules/knex/bin/cli.js"</span></div>
+    <div class="output" data-step="3"><span class="bar">▤ terminal</span><span class="val">npm run knex -- -h</span></div>
+    <div class="lead" data-step="4">O <b>--</b> separa: "isso aqui é parâmetro pro comando de dentro", não pro npm.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Esse detalhe do -- costuma confundir. Vale digitar junto e mostrar o --help do knex aparecendo.</p>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>ANTES DO COMANDO</div>
+    <h2>O que é uma migration?</h2>
+    <div class="sub" data-step="1" style="max-width:52ch">É um arquivo com <b>uma instrução</b> de mudança na estrutura do banco. Tipo uma receita: "crie a tabela users", "adicione a coluna email".</div>
+    <div class="grid2" data-step="2" style="font-size:clamp(12px,1.6vw,19px)">
+      <div class="panel" style="font-size:inherit"><span class="cap">SEM MIGRATION</span>Você cria a tabela na mão, no seu PC. O colega baixa o projeto e o banco dele está <b>vazio</b>. "Na minha máquina funciona!"</div>
+      <div class="panel accent" style="font-size:inherit"><span class="cap">COM MIGRATION</span>A mudança fica escrita num arquivo, junto com o código. O colega roda <b>um comando</b> e o banco dele fica igualzinho ao seu.</div>
+    </div>
+    <div class="output" data-step="3" style="gap:1px;font-size:clamp(10px,1.4vw,16px);padding:10px 16px">
+      <span class="bar">▤ src/shared/database/migrations · cada arquivo = um passo</span>
+      <span><span style="color:var(--muted)">20261005_</span>create_users.ts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--muted)">→ passo 1: cria a tabela users</span></span>
+      <span><span style="color:var(--muted)">20261012_</span>add_phone_to_users.ts <span style="color:var(--muted)">→ passo 2: adiciona a coluna phone</span></span>
+      <span><span style="color:var(--muted)">20261020_</span>create_products.ts&nbsp;&nbsp;&nbsp;<span style="color:var(--muted)">→ passo 3: cria a tabela products</span></span>
+    </div>
+    <div class="row" data-step="4" style="font-size:clamp(12px,1.6vw,19px)"><span class="mk">▸</span><div>O número no começo é a <b>data e hora</b>: garante que os passos rodem sempre <b>na ordem</b>. E o Knex anota quais já rodaram, então nunca roda o mesmo passo duas vezes.</div></div>
+    <div class="lead" data-step="5" style="font-size:clamp(14px,2vw,24px)">Pense no <b>save do videogame</b>: cada migration é um checkpoint do banco. Dá pra avançar (<code>up</code>) ou voltar um checkpoint (<code>down</code>).</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar o conceito antes do comando. Quem nunca programou não tem a dor de "banco diferente em cada máquina", então a comparação sem/com migration é o centro do slide.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Comece pela dor: "imagina que eu crio uma tabela no meu PC. Como vocês ficam com ela no de vocês?" Deixe a turma responder antes de mostrar o painel.</li><li>Na lista de arquivos, aponte que ninguém <b>edita</b> uma migration antiga: precisou mudar algo, cria uma nova (o passo 2 adiciona phone, não altera o passo 1).</li><li>Outra analogia que funciona: o <b>histórico de uma reforma</b>. Cada anotação diz o que foi feito; quem chega depois segue a lista e chega na mesma casa.</li><li>O Knex guarda o controle numa tabela própria, <b>knex_migrations</b>. Vale mostrar quando abrirmos o db.sqlite no VS Code.</li><li>Não aprofunde <code>up</code>/<code>down</code> aqui: isso é o slide "Anatomia de uma migration".</li></ul>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>ESTRUTURA DO BANCO</div>
+    <h2>Criando uma migration</h2>
+    <div class="output" data-step="1"><span class="bar">▤ terminal</span><span class="val">npm run knex -- migrate:make create_users</span></div>
+    <div class="sub" data-step="2">Isso cria um arquivo novo dentro de <code>shared/database/migrations</code>.</div>
+    <div class="lead" data-step="3">Cada migration é um "passo" na história do banco — um registro do que mudou e quando.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Todo mundo roda o comando e vê o arquivo aparecer na pasta, ao vivo.</p>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>MONTANDO A PEÇA</div>
+    <h2>Anatomia de uma migration</h2>
+    <div class="output" data-step="1" style="gap:2px;font-size:clamp(12px,1.6vw,19px)">
+      <span class="bar">▤ migrations/xxxx_create_users.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> type { Knex } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"knex"</span></span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">up</span>(knex: Knex): Promise&lt;void&gt; { ... }</span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">down</span>(knex: Knex): Promise&lt;void&gt; { ... }</span>
+    </div>
+    <div class="anatomy-cap" style="gap:8px">
+      <div class="row" data-step="2"><span class="blk blk-func chip" data-term="migrationup" tabindex="0" role="button" aria-haspopup="dialog">up</span><div>constrói — cria a tabela</div></div>
+      <div class="row" data-step="3"><span class="blk blk-op chip" data-term="migrationdown" tabindex="0" role="button" aria-haspopup="dialog">down</span><div>desfaz — apaga a tabela (rollback)</div></div>
+    </div>
+    <div class="lead" data-step="4">Toda migration sabe ir pra frente (<b>up</b>) e voltar atrás (<b>down</b>).</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fixar o par up/down antes de preencher com as colunas de verdade no próximo slide — evita misturar os dois conceitos.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Analogia: up é "montar o móvel", down é "desmontar e devolver pra caixa".</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>DEFININDO AS COLUNAS</div>
+    <h2>Criando a tabela users</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.25vw,13px);padding:9px 14px">
+      <span class="bar">▤ up(knex)</span>
+      <span>await knex.schema.<span style="color:var(--c-func)">createTable</span>(<span style="color:var(--c-strq)">"users"</span>, (table) =&gt; {</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">uuid</span>(<span style="color:var(--c-strq)">"id"</span>).primary()</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"name"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"email"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"password"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">boolean</span>(<span style="color:var(--c-strq)">"status"</span>).defaultTo(<span style="color:var(--accent)">true</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;table.<span style="color:var(--c-func)">timestamp</span>(<span style="color:var(--c-strq)">"created_at"</span>).defaultTo(knex.fn.now()).notNullable()</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:5px">
+      <div class="row" data-step="2" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-func chip" style="padding:3px 9px">uuid().primary()</span><div>identidade única da linha (o valor a gente gera no código)</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-func chip" style="padding:3px 9px">.notNullable()</span><div>campo obrigatório — não pode ficar vazio</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-func chip" style="padding:3px 9px">.defaultTo(...)</span><div>valor padrão se ninguém informar</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Cada chamada de table.X já é o tipo da coluna no banco — mostrar que o código descreve a tabela.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>O SQLite não tem função pra gerar UUID sozinho (no Postgres seria uuid_generate_v4()). Na hora de inserir, geramos o id no código com <b>randomUUID()</b> do "node:crypto" — fica pra próxima aula.</li><li>boolean no SQLite vira 0/1 por baixo. Na extensão do VS Code o status aparece como 1, não true.</li></ul>
+<h4>TEMPO</h4><p class="time">~8 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:8px">
+    <div class="eyebrow"><span class="sq"></span>JUNTANDO TUDO</div>
+    <h2 style="font-size:clamp(18px,3.2vw,38px)">O arquivo da migration inteiro</h2>
+    <div class="output" data-step="1" style="gap:0px;font-size:clamp(8px,1.1vw,12px);padding:8px 14px;line-height:1.5">
+      <span class="bar">▤ shared/database/migrations/xxxx_create_users.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> type { Knex } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"knex"</span></span>
+      <span>&nbsp;</span>
+      <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">up</span>(knex: Knex): Promise&lt;void&gt; {</span>
+      <span>&nbsp;&nbsp;await knex.schema.<span style="color:var(--c-func)">createTable</span>(<span style="color:var(--c-strq)">"users"</span>, (table) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">uuid</span>(<span style="color:var(--c-strq)">"id"</span>).primary()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"name"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"email"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">string</span>(<span style="color:var(--c-strq)">"password"</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">boolean</span>(<span style="color:var(--c-strq)">"status"</span>).defaultTo(<span style="color:var(--accent)">true</span>).notNullable()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">timestamp</span>(<span style="color:var(--c-strq)">"created_at"</span>).defaultTo(knex.fn.now()).notNullable()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;table.<span style="color:var(--c-func)">timestamp</span>(<span style="color:var(--c-strq)">"updated_at"</span>).defaultTo(knex.fn.now()).notNullable()</span>
+      <span>&nbsp;&nbsp;})</span>
+      <span>}</span>
+      <span>&nbsp;</span>
+      <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">down</span>(knex: Knex): Promise&lt;void&gt; {</span>
+      <span>&nbsp;&nbsp;await knex.schema.<span style="color:var(--c-func)">dropTable</span>(<span style="color:var(--c-strq)">"users"</span>)</span>
+      <span>}</span>
+    </div>
+    <div class="lead" data-step="2" style="font-size:clamp(12px,1.8vw,20px)">Nada aqui é novo — é tudo o que acabamos de ver, só junto no mesmo arquivo.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar uma visão do arquivo real, completo — depois de ver as peças separadas, mostrar que o arquivo final não é maior nem mais assustador do que a soma das partes.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Pode abrir o arquivo de verdade no VS Code de alguém e comparar lado a lado com o slide.</li></ul>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>HORA DA VERDADE</div>
+    <h2>Rodando a migration</h2>
+    <div class="output" data-step="1"><span class="bar">▤ terminal</span><span class="val">npm run knex -- migrate:latest</span></div>
+    <div class="sub" data-step="2">Executa o <b>up</b> de todas as migrations pendentes — cria a tabela de verdade no banco.</div>
+    <div class="output" data-step="3"><span class="bar">▤ terminal</span><span class="val">npm run knex -- migrate:rollback</span></div>
+    <div class="sub" data-step="4">Desfaz a última leva — roda o <b>down</b>. Ótimo pra corrigir rápido e tentar de novo.</div>
+    <div class="panel accent" data-step="5" style="font-size:clamp(13px,1.8vw,22px)"><span class="cap">OLHA A PASTA</span>Apareceu o arquivo <b>db.sqlite</b> na raiz do projeto. Esse é o banco.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Todo mundo roda e vê o db.sqlite aparecer. No próximo slide abrimos ele no VS Code pra ver a tabela.</p>
+<h4>ERROS COMUNS</h4><ul><li><b>Cannot find module 'better-sqlite3'</b>: faltou o npm install better-sqlite3.</li><li><b>table `users` already exists</b>: alguém criou a tabela na mão ou apagou a pasta de migrations. Apagar o db.sqlite e rodar de novo resolve (é só um arquivo).</li><li>db.sqlite apareceu em outra pasta: rodaram o comando fora da raiz do projeto.</li></ul>
+<h4>TEMPO</h4><p class="time">~10 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>VENDO O BANCO COM OS OLHOS</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Abrindo o db.sqlite no VS Code</h2>
+    <div class="sub" data-step="1" style="font-size:clamp(12px,1.7vw,19px);max-width:56ch">Vamos usar a extensão <b>SQLite</b> do VS Code. Nada de programa extra, nada de sudo.</div>
+    <div class="output" data-step="1" style="padding:10px 18px;font-size:clamp(12px,1.9vw,24px)"><span class="bar">▤ extensões (Ctrl+Shift+X) · pesquise</span><span class="val">alexcvzz.vscode-sqlite</span></div>
+    <div class="rows" style="gap:10px">
+      <div class="row" data-step="2" style="font-size:clamp(13px,1.8vw,22px)"><span class="num">1</span><div>Clique com o botão direito no <b>db.sqlite</b> → <b>Open Database</b></div></div>
+      <div class="row" data-step="3" style="font-size:clamp(13px,1.8vw,22px)"><span class="num">2</span><div>No Explorer, lá embaixo, aparece o painel <b>SQLITE EXPLORER</b></div></div>
+      <div class="row" data-step="4" style="font-size:clamp(13px,1.8vw,22px)"><span class="num">3</span><div>Abra o <b>db.sqlite</b>, passe o mouse em <b>users</b> e clique no <b>▶</b> (Show Table)</div></div>
+    </div>
+    <div class="grid2" data-step="5" style="gap:14px">
+      <div class="panel" style="font-size:clamp(12px,1.6vw,19px)"><span class="cap">USERS</span>A nossa tabela, com as colunas da migration. Ainda vazia.</div>
+      <div class="panel" style="font-size:clamp(12px,1.6vw,19px)"><span class="cap">KNEX_MIGRATIONS</span>O Knex anota aqui quais migrations já rodaram.</div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fechar o ciclo da migration: o código virou uma tabela de verdade, e dá pra ver sem sair do VS Code.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>A extensão se chama <b>SQLite</b>, do autor <b>alexcvzz</b>. Pesquisar só "sqlite" traz várias parecidas; o id alexcvzz.vscode-sqlite acha a certa.</li><li>Se o clique direito não mostrar "Open Database": Ctrl+Shift+P → <b>SQLite: Open Database</b> → escolher o db.sqlite.</li><li>Rode um migrate:rollback ao vivo e clique no refresh do SQLITE EXPLORER: a tabela users some. migrate:latest de novo e ela volta.</li><li>Expanda a tabela users no painel: aparecem as colunas e os tipos que a migration pediu.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li>Clicou no db.sqlite e abriu um monte de caractere estranho: abriu o arquivo como texto. Fechar a aba e usar o Open Database.</li><li>Painel SQLITE EXPLORER não aparece: ele fica no fim da aba Explorer (ícone de arquivos), às vezes recolhido. Rolar até o final.</li><li>Erro falando em <b>sqlite3</b> não encontrado: a extensão traz o sqlite3 junto, mas em algumas máquinas falha. Com sudo: sudo apt install sqlite3. Sem sudo: avisar o professor; o banco está certo, é só a visualização.</li><li>Abriu e não tem tabela nenhuma: abriu um db.sqlite de outra pasta. Conferir se é o da raiz do projeto.</li></ul>
+<h4>TEMPO</h4><p class="time">~8 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>SEGURANÇA</div>
+    <h2>Por que tirar configuração do código</h2>
+    <div class="panel accent" data-step="1" style="font-size:clamp(13px,1.8vw,22px)"><span class="cap">O QUE TEMOS HOJE</span>filename: "./db.sqlite" — direto no código.</div>
+    <div class="lead" data-step="2">Hoje é só o caminho de um arquivo. Mas no servidor o banco vai ter usuário e senha, e senha escrita no código vai junto pro GitHub.</div>
+    <div class="sub" data-step="3">A solução: tirar os valores do código e colocar em <b>variáveis de ambiente</b>. Já começamos com o costume certo.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Criar o motivo real antes de instalar o dotenv. Com SQLite não tem senha ainda, então o argumento é o hábito: cada máquina tem seu valor (caminho do banco, porta), e quando vier senha (banco no servidor, chave de login) ela já tem lugar certo.</p>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>ANTES DE GUARDAR SEGREDOS</div>
+    <h2>O que é uma "variável de ambiente"?</h2>
+    <div class="sub" data-step="1">É um valor que mora <b>fora</b> do código — guardado no computador (ou servidor) onde a aplicação roda, não dentro dos arquivos que a gente escreve.</div>
+    <div class="panel" data-step="2"><span class="cap">PENSA ASSIM</span>Uma receita de bolo diz "asse na temperatura do SEU forno" — porque cada forno é diferente. A receita (o código) não muda; o ajuste (a variável) é configurado em cada lugar onde ela roda.</div>
+    <div class="rows" data-step="3">
+      <div class="row"><span class="mk">▸</span><div>No nosso caso, "qual é a senha do banco" muda dependendo de onde o projeto está rodando — seu computador, o servidor da prefeitura, etc.</div></div>
+      <div class="row"><span class="mk">▸</span><div>A variável de ambiente deixa isso configurável, sem precisar mudar uma linha de código.</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar nome e forma ao conceito antes de instalar a biblioteca que lida com ele (dotenv) — sem isso, "variável de ambiente" é só jargão decorado.</p>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>VARIÁVEIS DE AMBIENTE</div>
+    <h2>Instalando o dotenv</h2>
+    <div class="grid2">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <div class="output" data-step="1"><span class="bar">▤ terminal</span><span class="val">npm i dotenv</span></div>
+        <div class="output" data-step="2" style="gap:1px;font-size:clamp(11px,1.5vw,18px);padding:10px 16px">
+          <span class="bar">▤ .env (na raiz do projeto, ao lado do package.json)</span>
+          <span>PORT=<span style="color:var(--c-strq)">3333</span></span>
+          <span>DB_FILE=<span style="color:var(--c-strq)">./db.sqlite</span></span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <div class="output" data-step="3"><span class="bar">▤ src/shared/env/environments.ts · 1ª linha</span><span class="val">import "dotenv/config"</span></div>
+        <div class="sub" data-step="4" style="font-size:clamp(13px,1.8vw,22px)">Lê o <code>.env</code> e joga tudo em <code>process.env.ALGO</code>. Vai na primeira linha, antes de qualquer código usar essas variáveis.</div>
+        <div class="panel" data-step="5" style="color:#e78a70;background:rgba(207,74,58,.1);font-size:clamp(13px,1.8vw,22px)"><span class="cap">ATENÇÃO</span>o <code>.env</code> entra no <code>.gitignore</code> — ele nunca vai pro GitHub.</div>
+      </div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Instalação e configuração ao vivo, todo mundo junto.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Crie o .env na raiz (mesmo nível do package.json), não dentro de src.</li><li>O valor de DB_FILE é o mesmo do database.ts atual — só está mudando de lugar.</li><li>Aproveite e coloque o <b>db.sqlite</b> no .gitignore também: cada um tem o seu banco, ele não vai pro GitHub.</li><li>O import vai no environments.ts porque é ele que lê o process.env. Como o database.ts importa o env, e o server/knexfile importam o database.ts, o .env é carregado antes de tudo.</li></ul>
+<h4>ERROS COMUNS</h4><ul><li>Esquecer o import "dotenv/config" no topo do arquivo que usa as variáveis.</li><li>Esquecer de criar o .env (só existe o .env.example).</li></ul>
+<h4>TEMPO</h4><p class="time">~8 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>E SE ALGUÉM ESQUECER DE CONFIGURAR?</div>
+    <h2>Por que validar as variáveis?</h2>
+    <div class="sub" data-step="1">As variáveis de ambiente ficam <b>fora</b> do código — então nada garante que vão estar lá, escritas certinho, quando o projeto rodar em outra máquina.</div>
+    <div class="rows" data-step="2">
+      <div class="row"><span class="mk">▸</span><div>Esqueceu de criar o <code>.env</code> numa máquina nova? O projeto pode quebrar de um jeito confuso, bem no meio de uma operação.</div></div>
+      <div class="row"><span class="mk">▸</span><div>É melhor <b>errar na hora de ligar</b> o servidor, com uma mensagem clara, do que quebrar escondido horas depois.</div></div>
+    </div>
+    <div class="lead" data-step="3">O <b>Zod</b> é uma biblioteca que usamos só pra isso: checar se as variáveis existem e estão no formato certo, antes de deixar o resto do código rodar.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Motivar o Zod como solução pra um problema concreto, antes de mostrar o código — evita que pareça "mais uma coisa pra decorar".</p>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>VALIDANDO ANTES DE RODAR</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Validando variáveis com Zod</h2>
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap" data-step="1">
+      <div class="output" style="padding:8px 14px;font-size:clamp(12px,1.6vw,18px)"><span class="bar">▤ terminal</span><span class="val">npm i zod</span><span class="val">npm i -D @types/node</span></div>
+      <div class="sub" style="font-size:clamp(12px,1.6vw,18px);max-width:40ch">Instalamos o Zod e descrevemos exatamente quais variáveis esperamos — e de que tipo. O <code>@types/node</code> ensina o TypeScript o que é o <code>process</code>.</div>
+    </div>
+    <div class="output" data-step="2" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:8px 14px">
+      <span class="bar">▤ src/shared/env/environments.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> <span style="color:var(--c-strq)">"dotenv/config"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { z } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"zod"</span></span>
+      <span></span>
+      <span><span style="color:var(--c-kw)">const</span> envSchema = z.<span style="color:var(--c-func)">object</span>({</span>
+      <span>&nbsp;&nbsp;PORT: z.<span style="color:var(--c-op)">coerce</span>.number().default(<span style="color:var(--blue)">3333</span>),</span>
+      <span>&nbsp;&nbsp;DB_FILE: z.string(),</span>
+      <span>})</span>
+      <span><span style="color:var(--c-kw)">const</span> _env = envSchema.<span style="color:var(--c-op)">safeParse</span>(process.env)</span>
+      <span><span style="color:var(--c-kw)">if</span> (!_env.success) <span style="color:var(--c-kw)">throw new</span> Error(<span style="color:var(--c-strq)">"Invalid environment variables"</span>)</span>
+      <span><span style="color:var(--c-kw)">export const</span> env = _env.data</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.5vw,16px)"><span class="blk blk-op chip" data-term="coerce" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">z.coerce</span><div>converte texto do .env pro tipo certo</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.5vw,16px)"><span class="blk blk-op chip" data-term="safeparse" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">safeParse</span><div>valida sem explodir o programa na mão</div></div>
+      <div class="row" data-step="5" style="font-size:clamp(11px,1.5vw,16px)"><span class="blk blk-var chip" data-term="typesnode" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">process</span><div>sublinhado vermelho? instale o <code>@types/node</code> e, no <b>tsconfig.json</b> (raiz do projeto), troque <code>"types": []</code> por <code>"types": ["node"]</code></div></div>
+    </div>
+    <div class="lead" data-step="6" style="font-size:clamp(13px,1.9vw,22px)">Faltou ou errou uma variável? O app nem sobe — erro claro, na hora certa.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Esse é o coração da aula: validar ambiente antes de qualquer outra coisa rodar.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Demonstre ao vivo: apague uma variável do .env e mostre o erro aparecendo na hora de subir o servidor.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li><b>Não é possível encontrar o nome 'z'</b>: faltou o npm i zod ou o import { z } from "zod".</li><li><b>Não é possível encontrar o nome 'process'</b> (ts 2591): faltou npm i @types/node -D, ou o tsconfig.json está com "types": [] — trocar por "types": ["node"].</li></ul>
+<h4>TEMPO</h4><p class="time">~12 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>FECHANDO O CICLO</div>
+    <h2>Conectando tudo com env</h2>
+    <div class="sub" data-step="1">Agora trocamos os valores "fixos" do <code>database.ts</code> pelas variáveis já validadas.</div>
+    <div class="output" data-step="2" style="gap:1px;font-size:clamp(10px,1.4vw,16px);padding:10px 16px">
+      <span class="bar">▤ src/config/database.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> { env } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"../shared/env/environments.js"</span></span>
+      <span></span>
+      <span>connection: {</span>
+      <span>&nbsp;&nbsp;filename: env.<span style="color:var(--c-func)">DB_FILE</span>,</span>
+      <span>},</span>
+    </div>
+    <div class="lead" data-step="3">Nada de configuração solta no código, sem variável esquecida — tudo validado antes de rodar.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fechar o ciclo da aula: o database.ts "ruim" do começo vira o database.ts seguro, usando o env validado.</p>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>USANDO O BANCO DE VERDADE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">CRUD: as 4 coisas que todo sistema faz</h2>
+    <div class="sub" data-step="1" style="max-width:52ch">Pensa na <b>agenda de contatos</b> do celular: você adiciona, procura, edita e apaga contatos. Quase todo sistema faz só isso com os dados.</div>
+    <table data-step="2" style="border-collapse:collapse;font-size:clamp(11px,1.5vw,18px);width:100%;max-width:820px">
+      <tr style="color:var(--muted);font-size:.8em;letter-spacing:2px;text-align:left"><th style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">CRUD</th><th style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">O QUE FAZ</th><th style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">MÉTODO HTTP</th><th style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">NO KNEX</th></tr>
+      <tr><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><b style="color:var(--green)">C · Create</b></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">adicionar</td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>POST</code></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>insert()</code></td></tr>
+      <tr><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><b style="color:var(--blue)">R · Read</b></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">buscar</td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>GET</code></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>select()</code></td></tr>
+      <tr><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><b style="color:var(--accent)">U · Update</b></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">editar</td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>PUT</code></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>update()</code></td></tr>
+      <tr><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><b style="color:#e78a70">D · Delete</b></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)">deletar</td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>DELETE</code></td><td style="padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.08)"><code>delete()</code></td></tr>
+    </table>
+    <div class="lead" data-step="3" style="font-size:clamp(14px,2vw,24px)">Hoje tudo fica no <code>server.ts</code>, num arquivo só. Depois a gente separa.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar o mapa antes do código: 4 operações, 4 métodos HTTP, 4 funções do Knex. Cada slide seguinte é uma linha dessa tabela.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Pergunte: "que apps vocês usam que adicionam, mostram, editam e apagam coisas?" (Instagram, lista de compras, agenda).</li><li>O <b>método HTTP</b> é o "verbo" do pedido: o mesmo endereço <code>/users</code> faz coisas diferentes dependendo do método.</li><li>Avise que as rotas vão todas no server.ts de propósito: primeiro entender, depois organizar.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>ROTAS</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Anatomia de uma rota</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(11px,1.5vw,18px);padding:8px 14px">
+      <span class="bar">▤ src/server.ts</span>
+      <span>app.<span style="color:var(--c-func)">get</span>(<span style="color:var(--c-strq)">'/users'</span>, <span style="color:var(--c-kw)">async</span> (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> users = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).select(<span style="color:var(--c-strq)">'*'</span>)</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> users</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" style="padding:3px 8px">app.get</span><div>o <b>método</b>: que tipo de pedido é (get, post, put, delete)</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-strq chip" style="padding:3px 8px;color:var(--c-strq-t)">'/users'</span><div>o <b>endereço</b>: http://localhost:3333/users</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-var chip" data-term="reqreply" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">request, reply</span><div><b>request</b> = o pedido que chegou · <b>reply</b> = a resposta que vamos mandar</div></div>
+      <div class="row" data-step="5" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-kw chip" data-term="asyncawait" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">async / await</span><div>esperar o banco responder antes de continuar</div></div>
+      <div class="row" data-step="6" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-op chip" style="padding:3px 8px">return</span><div>o que o <b>return</b> devolver vira a resposta (em JSON)</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Toda rota tem o mesmo formato. Se entenderem essa, entendem as outras 4.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Compare com um restaurante: o <b>método + endereço</b> é o pedido do cliente ("quero ver o cardápio"), a função é a cozinha, o <b>return</b> é o prato que volta.</li><li>O GET dá pra testar no navegador: abra http://localhost:3333/users.</li><li>Nesse ponto não precisa explicar Promise. "await = espera o banco terminar" basta.</li></ul>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>C · CREATE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Adicionar usuário · POST /users</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:8px 14px">
+      <span class="bar">▤ src/server.ts</span>
+      <span>app.<span style="color:var(--c-func)">post</span>(<span style="color:var(--c-strq)">'/users'</span>, <span style="color:var(--c-kw)">async</span> (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { name, email, password } = request.<span style="color:var(--c-op)">body</span> <span style="color:var(--c-kw)">as</span> { name: string, email: string, password: string }</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> user = { id: <span style="color:var(--c-func)">randomUUID</span>(), name, email, password }</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">insert</span>(user)</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">201</span>).send(user)</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-op chip" data-term="body" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">request.body</span><div>os dados que vieram <b>dentro</b> do pedido (o JSON enviado)</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" data-term="randomuuid" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">randomUUID()</span><div>gera um id único, tipo <code>8f3c1a2e-...</code>. Já vem no Node</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" style="padding:3px 8px">insert(user)</span><div>salva o usuário na tabela <code>users</code></div></div>
+      <div class="row" data-step="5" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-var chip" data-term="httpstatus" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">201</span><div>código de "criado com sucesso"</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Primeira escrita no banco feita pela API. Momento de mostrar o registro aparecendo no SQLite Explorer.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Lembre a migration: as colunas <code>status</code> e <code>created_at</code> têm valor padrão, por isso não mandamos elas.</li><li>O <code>as { ... }</code> só avisa o TypeScript o formato do body. Ele <b>não confere</b> nada: se mandarem errado, passa. Validar de verdade (com Zod) fica pra próxima.</li><li>Pra importar, no topo do server.ts: <code>import { connection } from './config/database.js'</code> e <code>import { randomUUID } from 'node:crypto'</code>.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li><b>NOT NULL constraint failed: users.name</b>: o body chegou sem name. Conferir o JSON enviado.</li><li>Body chega <b>undefined</b>: faltou o header <code>Content-Type: application/json</code> na ferramenta de teste.</li></ul>
+<h4>TEMPO</h4><p class="time">~8 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>R · READ</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Buscar usuários · GET</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:8px 14px">
+      <span class="bar">▤ todos · GET /users</span>
+      <span>app.<span style="color:var(--c-func)">get</span>(<span style="color:var(--c-strq)">'/users'</span>, <span style="color:var(--c-kw)">async</span> () =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> users = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">select</span>(<span style="color:var(--c-strq)">'*'</span>)</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> users</span>
+      <span>})</span>
+    </div>
+    <div class="output" data-step="2" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:8px 14px">
+      <span class="bar">▤ um só · GET /users/:id</span>
+      <span>app.<span style="color:var(--c-func)">get</span>(<span style="color:var(--c-strq)">'/users/:id'</span>, <span style="color:var(--c-kw)">async</span> (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { id } = request.<span style="color:var(--c-op)">params</span> <span style="color:var(--c-kw)">as</span> { id: string }</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> user = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">where</span>({ id }).<span style="color:var(--c-func)">first</span>()</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">if</span> (!user) {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">404</span>).send({ message: <span style="color:var(--c-strq)">'Usuário não encontrado'</span> })</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> user</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-op chip" data-term="params" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">:id / params</span><div>o <code>:id</code> é um pedaço <b>variável</b> do endereço: /users/<b>abc-123</b></div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" style="padding:3px 8px">where().first()</span><div>"procure onde o id é esse e me dê o <b>primeiro</b>"</div></div>
+      <div class="row" data-step="5" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-var chip" data-term="httpstatus" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">404</span><div>não achou ninguém com esse id</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Ler do banco: listar todos e buscar um. A diferença entre params e body costuma confundir, vale insistir.</p>
+<h4>CONDUZA ASSIM</h4><ul><li><code>select('*')</code> = <code>SELECT * FROM users</code>. Mostre o SQL equivalente pra ligar com o slide do Query Builder.</li><li>Sem o <code>.first()</code>, o where devolve uma <b>lista</b> (com 0 ou 1 item). O first pega o item direto.</li><li>Teste os dois no navegador: /users e /users/ID-COPIADO-DA-LISTA.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li>404 mesmo com o usuário existindo: copiaram o id com aspas ou espaço.</li></ul>
+<h4>TEMPO</h4><p class="time">~7 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>U · UPDATE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Editar usuário · PUT /users/:id</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:8px 14px">
+      <span class="bar">▤ src/server.ts</span>
+      <span>app.<span style="color:var(--c-func)">put</span>(<span style="color:var(--c-strq)">'/users/:id'</span>, <span style="color:var(--c-kw)">async</span> (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { id } = request.<span style="color:var(--c-op)">params</span> <span style="color:var(--c-kw)">as</span> { id: string }</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { name, email, password } = request.<span style="color:var(--c-op)">body</span> <span style="color:var(--c-kw)">as</span> { name: string, email: string, password: string }</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> updated = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">where</span>({ id }).<span style="color:var(--c-func)">update</span>({ name, email, password })</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">if</span> (updated === <span style="color:var(--blue)">0</span>) {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">404</span>).send({ message: <span style="color:var(--c-strq)">'Usuário não encontrado'</span> })</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> user = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">where</span>({ id }).<span style="color:var(--c-func)">first</span>()</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> user</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-op chip" data-term="params" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">params + body</span><div><b>quem</b> editar vem no endereço; os <b>dados novos</b> vêm no body</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" style="padding:3px 8px">update()</span><div>troca os valores e devolve <b>quantas linhas</b> mudou</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-var chip" data-term="httpstatus" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">0 → 404</span><div>mudou 0 linhas? então esse id não existe</div></div>
+    </div>
+    <div class="panel accent" data-step="5" style="font-size:clamp(12px,1.6vw,19px);padding:10px 16px"><span class="cap">CUIDADO COM O WHERE</span>Sem o <code>.where({ id })</code>, o update edita <b>todos</b> os usuários da tabela.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Juntar as duas formas de mandar dados: params (quem) e body (o quê).</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Faça o teste do "esqueci o where" mentalmente com eles, não ao vivo: é o erro clássico que todo dev já cometeu.</li><li>No final buscamos o usuário de novo só pra devolver ele atualizado.</li><li>Nesse PUT simples é preciso mandar os 3 campos. Editar só um campo (PATCH) é um bom desafio pra próxima.</li></ul>
+<h4>TEMPO</h4><p class="time">~7 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>D · DELETE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Deletar usuário · DELETE /users/:id</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:8px 14px">
+      <span class="bar">▤ src/server.ts</span>
+      <span>app.<span style="color:var(--c-func)">delete</span>(<span style="color:var(--c-strq)">'/users/:id'</span>, <span style="color:var(--c-kw)">async</span> (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { id } = request.<span style="color:var(--c-op)">params</span> <span style="color:var(--c-kw)">as</span> { id: string }</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> deleted = <span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">'users'</span>).<span style="color:var(--c-func)">where</span>({ id }).<span style="color:var(--c-func)">delete</span>()</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">if</span> (deleted === <span style="color:var(--blue)">0</span>) {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">404</span>).send({ message: <span style="color:var(--c-strq)">'Usuário não encontrado'</span> })</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+      <span></span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">204</span>).send()</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:4px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-func chip" style="padding:3px 8px">delete()</span><div>apaga e devolve <b>quantas linhas</b> apagou (igual ao update)</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.45vw,17px)"><span class="blk blk-var chip" data-term="httpstatus" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 8px">204</span><div>"deu certo, e não tenho nada pra te mostrar" (resposta vazia)</div></div>
+    </div>
+    <div class="lead" data-step="4" style="font-size:clamp(14px,2vw,24px)">Mesma regra do editar: <b>sem where, apaga a tabela inteira</b>.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fechar o CRUD. A estrutura é quase igual ao PUT: perceber o padrão é o aprendizado.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Peça pra turma apontar o que é igual ao PUT antes de explicar (params, where, contagem, 404).</li><li>Depois de deletar, busque o mesmo id: tem que voltar 404.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>RESPOSTAS</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O número que volta: status HTTP</h2>
+    <div class="sub" data-step="1" style="max-width:52ch">Toda resposta vem com um número que diz <b>como foi</b>. Começou com 2 = deu certo. Começou com 4 = o pedido tem problema.</div>
+    <div class="grid2" data-step="2" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));font-size:clamp(11px,1.4vw,17px)">
+      <div class="panel" style="font-size:inherit;padding:14px 16px"><span class="big-num" style="color:var(--green);font-size:clamp(28px,4.5vw,56px)">200</span><b>OK</b><br><span style="color:var(--muted)">deu certo, toma os dados</span></div>
+      <div class="panel" style="font-size:inherit;padding:14px 16px"><span class="big-num" style="color:var(--green);font-size:clamp(28px,4.5vw,56px)">201</span><b>Created</b><br><span style="color:var(--muted)">criei o que você pediu</span></div>
+      <div class="panel" style="font-size:inherit;padding:14px 16px"><span class="big-num" style="color:var(--green);font-size:clamp(28px,4.5vw,56px)">204</span><b>No Content</b><br><span style="color:var(--muted)">deu certo, nada pra mostrar</span></div>
+      <div class="panel" style="font-size:inherit;padding:14px 16px"><span class="big-num" style="color:#e78a70;font-size:clamp(28px,4.5vw,56px)">404</span><b>Not Found</b><br><span style="color:var(--muted)">não achei isso</span></div>
+    </div>
+    <div class="lead" data-step="3" style="font-size:clamp(14px,2vw,24px)">Quando a gente só faz <code>return</code>, o Fastify manda <b>200</b> sozinho.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar sentido aos números que aparecem na ferramenta de teste.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Todo mundo já viu o 404 em site quebrado: use isso de gancho.</li><li>Se perguntarem do 500: é erro do servidor (bug no nosso código). O detalhe aparece no terminal do npm run dev.</li><li>Tabela completa pra curiosos: http.cat (cada código com uma foto de gato).</li></ul>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>HORA DE TESTAR</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Testando as rotas</h2>
+    <div class="grid2" data-step="1" style="font-size:clamp(12px,1.6vw,19px)">
+      <div class="panel" style="font-size:inherit;padding:12px 16px"><span class="cap">GET · NO NAVEGADOR</span>Abra <code>http://localhost:3333/users</code>. O navegador só sabe fazer GET.</div>
+      <div class="panel" style="font-size:inherit;padding:12px 16px"><span class="cap">POST, PUT, DELETE</span>Precisa de uma ferramenta: extensão <b>Thunder Client</b> no VS Code, Insomnia ou Postman.</div>
+    </div>
+    <div class="output" data-step="2" style="gap:1px;font-size:clamp(11px,1.5vw,18px);padding:8px 14px">
+      <span class="bar">▤ body do POST /users · JSON</span>
+      <span>{</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-strq)">"name"</span>: <span style="color:var(--c-strq)">"Maria"</span>,</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-strq)">"email"</span>: <span style="color:var(--c-strq)">"maria@email.com"</span>,</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-strq)">"password"</span>: <span style="color:var(--c-strq)">"123456"</span></span>
+      <span>}</span>
+    </div>
+    <div class="row" data-step="3" style="font-size:clamp(12px,1.6vw,19px)"><span class="mk">▸</span><div>Ordem do teste: <b>criar</b> → <b>listar</b> (copiar o id) → <b>buscar</b> pelo id → <b>editar</b> → <b>deletar</b> → buscar de novo (404).</div></div>
+    <div class="panel" data-step="4" style="color:#e78a70;background:rgba(207,74,58,.1);font-size:clamp(12px,1.6vw,19px);padding:10px 16px"><span class="cap">ATENÇÃO</span>A senha está salva em <b>texto puro</b>, e a API ainda devolve ela na resposta. Serve pra aprender; num sistema real nunca é assim. Vamos proteger nas próximas aulas.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Todo mundo testando as 5 rotas e vendo os dados mudarem no SQLite Explorer.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Instale o Thunder Client junto com a turma (aba Extensions, buscar "Thunder Client").</li><li>Depois de cada pedido, atualize a tabela users no SQLite Explorer: ver o dado mudar no banco é o que faz a ficha cair.</li><li>O npm run dev está com tsx watch: salvou o server.ts, o servidor reinicia sozinho.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li>Body chega vazio: no Thunder Client, o JSON vai na aba <b>Body → JSON</b>, não em Query.</li><li><b>ECONNREFUSED</b> / não conecta: o npm run dev não está rodando, ou caiu por erro no código (olhar o terminal).</li><li><b>Route POST:/user not found</b>: endereço digitado errado (falta o s de users).</li></ul>
+<h4>TEMPO</h4><p class="time">~12 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>O QUE CONSTRUÍMOS HOJE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">A estrutura do projeto</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 18px">
+      <span class="bar">▤ árvore do projeto</span>
+      <span style="color:var(--c-tag)">cardume-api/</span>
+      <span style="color:var(--c-tag)">+-- src/</span>
+      <span style="color:var(--c-tag)">|   +-- config/</span>
+      <span>|   |   `-- <span style="color:var(--accent)">database.ts</span></span>
+      <span style="color:var(--c-tag)">|   +-- shared/</span>
+      <span style="color:var(--c-tag)">|   |   +-- database/migrations/</span>
+      <span>|   |   |   `-- <span style="color:var(--accent)">xxxx_create_users.ts</span></span>
+      <span style="color:var(--c-tag)">|   |   `-- env/</span>
+      <span>|   |       `-- <span style="color:var(--accent)">environments.ts</span></span>
+      <span>|   `-- <span style="color:var(--accent)">server.ts</span>  <span style="color:var(--muted)">(as rotas de usuário)</span></span>
+      <span><span style="color:var(--accent)">+-- db.sqlite</span>  <span style="color:var(--muted)">(o banco · não vai pro Git)</span></span>
+      <span><span style="color:var(--accent)">+-- knexfile.ts</span></span>
+      <span style="color:var(--muted)">+-- package.json</span>
+      <span><span style="color:var(--accent)">+-- .env</span>  <span style="color:var(--muted)">(não vai pro Git)</span></span>
+      <span style="color:var(--muted)">+-- .env.example</span>
+      <span style="color:var(--muted)">`-- .gitignore</span>
+    </div>
+    <div class="lead" data-step="2" style="font-size:clamp(13px,1.9vw,22px)">Em <span style="color:var(--accent)">laranja</span>, o que nasceu hoje: conexão, migration, validação de ambiente e as rotas — cada coisa no seu lugar.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fechar visualmente mostrando onde cada peça da aula mora no projeto — ajuda quem se perdeu em qual arquivo fazia o quê.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Se der tempo, abra o VS Code de alguém e mostre essa árvore de verdade, comparando com o slide.</li></ul>
+<h4>TEMPO</h4><p class="time">~3 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>FECHAMENTO</div>
+    <h2>O que vocês aprenderam hoje</h2>
+    <div class="rows" data-step="1">
+      <div class="row"><span class="mk ok">▸</span><div>Biblioteca e CLI — as ferramentas prontas que a gente usa.</div></div>
+      <div class="row"><span class="mk ok">▸</span><div>Conectar no SQLite com Knex, criar tabelas com migrations e ver tudo no VS Code.</div></div>
+      <div class="row"><span class="mk ok">▸</span><div>Variáveis de ambiente, dotenv e validação com Zod.</div></div>
+      <div class="row"><span class="mk ok">▸</span><div>CRUD de usuários: rotas que adicionam, buscam, editam e deletam no banco.</div></div>
+    </div>
+    <div class="panel accent" data-step="2"><span class="cap">PRÓXIMA AULA</span>Separar as rotas do server.ts e validar os dados que chegam.</div>
+    <div class="hint" data-step="3">fim da AULA 02 · valeu!</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Recapitular e fechar com energia — o banco agora existe de verdade e está protegido.</p>
+<h4>TEMPO</h4><p class="time">~2 min</p></div>
+  </section>
+
+</div>
+
+<button id="prev" class="navbtn" aria-label="Voltar">◀</button>
+<button id="next" class="navbtn" aria-label="Avançar">▶</button>
+<button id="fs" class="navbtn fs" aria-label="Tela cheia">⤢</button>
+<button id="info" class="navbtn info" aria-label="Notas do professor" title="Notas do professor (tecla i)">i</button>
+
+<aside id="drawer">
+  <div class="notes-head">
+    <span class="nh-title">NOTAS DO PROFESSOR</span>
+    <span class="nh-num" id="notesNum">01 / 21</span>
+    <button id="closeNotes" aria-label="Fechar notas">×</button>
+  </div>
+  <div class="notes-body" id="notesBody"></div>
+</aside>
+
+<div id="termOverlay" role="dialog" aria-modal="true">
+  <div id="termModal">
+    <div class="tm-head">
+      <span class="tm-chip"></span>
+      <span class="tm-title" id="tmTitle"></span>
+      <button class="tm-close" id="tmClose" aria-label="Fechar">×</button>
+    </div>
+    <div class="tm-body" id="tmBody"></div>
+  </div>
+</div>
+
+<div id="bar">
+  <span class="brand"><b>BACKEND I</b> · Estrutura e validações</span>
+  <div id="prog"><i></i></div>
+  <span id="count">01 / 21</span>
+</div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const stage=document.getElementById('stage');
+  const progFill=document.querySelector('#prog i');
+  const count=document.getElementById('count');
+  let si=0, step=0;
+
+  const drawer=document.getElementById('drawer');
+  const infoBtn=document.getElementById('info');
+  const notesBody=document.getElementById('notesBody');
+  const notesNum=document.getElementById('notesNum');
+  let drawerOpen=false;
+  function updateDrawer(){
+    const n=slides[si].querySelector('.pnote');
+    notesBody.innerHTML=n?n.innerHTML:'<p>—</p>';
+    notesBody.scrollTop=0;
+    notesNum.textContent=String(si+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  }
+  function toggleDrawer(){ drawerOpen=!drawerOpen; drawer.classList.toggle('open',drawerOpen); infoBtn.classList.toggle('active',drawerOpen); }
+  function closeDrawer(){ drawerOpen=false; drawer.classList.remove('open'); infoBtn.classList.remove('active'); }
+
+  const termOverlay=document.getElementById('termOverlay');
+  const termModal=document.getElementById('termModal');
+  const tmTitle=document.getElementById('tmTitle');
+  const tmBody=document.getElementById('tmBody');
+  const tmChip=termModal.querySelector('.tm-chip');
+  const tmClose=document.getElementById('tmClose');
+
+  const TERMS={
+    filename:{
+      title:'filename — onde mora o banco',
+      chip:'filename', chipClass:'blk-var',
+      body:`<p>No SQLite o banco inteiro é <b>um arquivo</b>. O <b>filename</b> diz qual arquivo abrir.</p>
+        <p class="tm-example"><code>"./db.sqlite"</code> = "um arquivo chamado db.sqlite na pasta onde o comando rodou" (a raiz do projeto, onde fica o package.json).</p>
+        <p class="tm-example">Se o arquivo não existir, ele é criado na hora. Apagar o arquivo = apagar o banco inteiro.</p>`
+    },
+    migration:{
+      title:'migrations — histórico do banco',
+      chip:'migrations', chipClass:'blk-func',
+      body:`<p>Uma <b>migration</b> é um arquivo que descreve <b>uma mudança</b> na estrutura do banco (criar tabela, adicionar coluna etc). Juntas, elas formam o histórico de como o banco evoluiu.</p>
+        <p class="tm-example"><b>Por que não mudar o banco direto pela mão?</b> Porque aí ninguém mais no time sabe reproduzir essa mudança em outra máquina (ou no servidor de produção).</p>
+        <p class="tm-example">A pasta configurada aqui é onde o Knex guarda e organiza esses arquivos, em ordem.</p>`
+    },
+    importknex:{
+      title:'import — trazendo o knex',
+      chip:'import', chipClass:'blk-op',
+      body:`<p><code>import knex, { type Knex } from "knex"</code> traz duas coisas do pacote <code>knex</code>:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li><b>knex</b> (minúsculo): a <b>função</b> que cria a conexão. Usamos lá no final.</li>
+          <li><b>Knex</b> (maiúsculo, com <code>type</code>): só um <b>tipo</b> do TypeScript, o “molde” da configuração. Some quando o código roda.</li>
+        </ul>`
+    },
+    exportconfig:{
+      title:'export const config: Knex.Config',
+      chip:'export const config', chipClass:'blk-op',
+      body:`<p>Cada pedaço da linha tem um papel:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li><b>export</b>: deixa outro arquivo fazer <code>import { config } from "./config/database"</code>. Sem ele, o config só existe dentro deste arquivo.</li>
+          <li><b>const</b>: cria uma variável que não vai ser trocada por outra.</li>
+          <li><b>config</b>: o nome que escolhemos.</li>
+          <li><b>: Knex.Config</b>: manda o TypeScript conferir o objeto. Errou o nome de uma opção (ex.: <code>clinet</code>)? O editor sublinha na hora.</li>
+        </ul>
+        <p class="tm-example"><b>Quem importa o config?</b> O <b>knexfile</b>, que o CLI do Knex lê pra rodar <code>migrate:make</code> e <code>migrate:latest</code>. O CLI não liga pro connection, ele só quer a planta.</p>`
+    },
+    usenull:{
+      title:'useNullAsDefault — vazio vira NULL',
+      chip:'useNullAsDefault', chipClass:'blk-op',
+      body:`<p>Quando você insere um registro sem preencher alguma coluna, o Knex precisa decidir o que colocar nela.</p>
+        <p class="tm-example">Em outros bancos ele manda a palavra <code>DEFAULT</code>, mas o <b>SQLite não aceita</b> isso num insert.</p>
+        <p class="tm-example">Com <code>useNullAsDefault: true</code>, a coluna não preenchida recebe <b>NULL</b> (vazio). Sem essa opção, aparece um aviso amarelo no terminal. Não é erro, mas assusta.</p>`
+    },
+    connection:{
+      title:'export const connection = knex(config)',
+      chip:'export const connection', chipClass:'blk-func',
+      body:`<p>Até aqui o <code>config</code> é só uma <b>descrição</b>, a planta. Nada se conectou ainda.</p>
+        <p class="tm-example"><b>knex(config)</b>: o Knex lê a planta e devolve o objeto que conversa com o banco. Esse resultado guardamos em <b>connection</b>.</p>
+        <p class="tm-example"><b>export</b>: deixa o resto da API (rotas, controllers) importar e usar a mesma conexão:</p>
+        <p class="tm-example"><code>import { connection } from "./config/database"</code><br><code>await connection("users").select("*")</code> = <code>SELECT * FROM users</code></p>
+        <p class="tm-example"><b>Por que dois exports?</b> O <b>config</b> vai pro CLI do Knex (migrations); o <b>connection</b> vai pro código da API (consultas).</p>`
+    },
+    migrationup:{
+      title:'up() — construir',
+      chip:'up', chipClass:'blk-func',
+      body:`<p>O método <b>up</b> descreve o que fazer pra <b>aplicar</b> a mudança — geralmente criar uma tabela ou coluna.</p>
+        <p class="tm-example">É o que roda quando você executa <code>migrate:latest</code>.</p>`
+    },
+    migrationdown:{
+      title:'down() — desfazer',
+      chip:'down', chipClass:'blk-op',
+      body:`<p>O método <b>down</b> descreve como <b>desfazer</b> exatamente o que o up fez — geralmente apagar a tabela ou coluna criada.</p>
+        <p class="tm-example">É o que roda quando você executa <code>migrate:rollback</code>. Serve pra corrigir rápido se algo deu errado.</p>`
+    },
+    coerce:{
+      title:'z.coerce — convertendo tipos',
+      chip:'z.coerce', chipClass:'blk-op',
+      body:`<p>Toda variável de ambiente (.env) chega como <b>texto (string)</b>, mesmo quando é um número como a porta.</p>
+        <p class="tm-example"><b>z.coerce.number()</b> pega esse texto e converte pro tipo certo antes de validar — "3333" vira o número 3333.</p>
+        <p class="tm-example">Sem o coerce, z.number() rejeitaria a string "3333" mesmo sendo um número válido escrito como texto.</p>`
+    },
+    safeparse:{
+      title:'safeParse — validar sem quebrar',
+      chip:'safeParse', chipClass:'blk-op',
+      body:`<p><b>parse()</b> lança um erro na hora se os dados forem inválidos — para o programa ali.</p>
+        <p class="tm-example"><b>safeParse()</b> não lança nada: devolve um objeto <code>{ success, data }</code> ou <code>{ success: false, error }</code>, e você decide o que fazer.</p>
+        <p class="tm-example">Aqui usamos pra checar o resultado e decidir, com uma mensagem clara, se o app pode subir ou não.</p>`
+    },
+    typesnode:{
+      title:"Não é possível encontrar o nome 'process'",
+      chip:'process', chipClass:'blk-var',
+      body:`<p>O <code>process</code> não é do TypeScript, é do <b>Node</b>. Pro editor reconhecer, ele precisa das <b>definições de tipo</b> do Node, que vêm num pacote separado.</p>
+        <p class="tm-example"><b>1. Instalar os tipos</b> (só pra desenvolver, por isso o <code>-D</code>):<br><code>npm i -D @types/node</code></p>
+        <p class="tm-example"><b>2. Ajustar o tsconfig.json</b>: abra o arquivo <b>tsconfig.json</b> na <b>raiz do projeto</b> (ao lado do package.json). Dentro de <code>"compilerOptions"</code>, procure a linha <code>"types": []</code>. O <code>tsc --init</code> cria ela vazia, o que desliga todos os tipos. Troque por <code>["node"]</code>:</p>
+        <pre style="margin:6px 0;padding:8px 12px;background:rgba(0,0,0,.35);border-radius:4px;font-size:.9em;line-height:1.5;overflow-x:auto;white-space:pre"><code>// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "esnext",
+    <b style="color:var(--accent)">"types": ["node"],</b>   // antes: "types": []
+    ...
+  }
+}</code></pre>
+        <p class="tm-example">Dica: <code>Ctrl+F</code> no tsconfig.json e busque <code>"types"</code>. A linha certa é a que <b>não</b> começa com <code>//</code>. A de baixo, comentada, é só um lembrete do próprio arquivo.</p>
+        <p class="tm-example">Se o vermelho continuar: <code>Ctrl+Shift+P</code> → <b>TypeScript: Restart TS Server</b>.</p>
+        <p class="tm-example">É um erro <b>só do editor</b>: o <code>tsx</code> não confere tipos, então o <code>npm run dev</code> roda mesmo com ele.</p>`
+    },
+    reqreply:{
+      title:'request e reply',
+      chip:'request, reply', chipClass:'blk-var',
+      body:`<p>O Fastify chama a nossa função entregando dois objetos:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li><b>request</b>: tudo sobre o <b>pedido</b> que chegou. Os dados ficam em <code>request.body</code> e <code>request.params</code>.</li>
+          <li><b>reply</b>: as ferramentas pra montar a <b>resposta</b>, como <code>reply.status(404).send(...)</code>.</li>
+        </ul>
+        <p class="tm-example">Quando a rota não precisa de nenhum dos dois (como listar todos), dá pra deixar os parênteses vazios: <code>async () =&gt; { ... }</code>.</p>`
+    },
+    asyncawait:{
+      title:'async / await — esperando o banco',
+      chip:'async / await', chipClass:'blk-kw',
+      body:`<p>Falar com o banco <b>demora</b> um pouquinho. O <b>await</b> diz: "espera essa resposta chegar antes de ir pra próxima linha".</p>
+        <p class="tm-example">Só dá pra usar <code>await</code> dentro de uma função marcada com <b>async</b>. Por isso toda rota que mexe no banco começa com <code>async</code>.</p>
+        <p class="tm-example">Esqueceu o await? A variável recebe uma "promessa" em vez dos dados, e a resposta sai como <code>{}</code>.</p>`
+    },
+    body:{
+      title:'request.body — o conteúdo do pedido',
+      chip:'request.body', chipClass:'blk-op',
+      body:`<p>O <b>body</b> é o "pacote" que vem <b>dentro</b> do pedido. É onde mandamos os dados pra criar ou editar alguma coisa.</p>
+        <p class="tm-example"><code>{ "name": "Maria", "email": "maria@email.com", "password": "123456" }</code></p>
+        <p class="tm-example">GET e DELETE normalmente <b>não</b> têm body. POST e PUT têm.</p>
+        <p class="tm-example">O <code>as { name: string, ... }</code> só conta pro TypeScript o formato esperado. Ele <b>não confere</b> se os dados vieram certos; isso é trabalho de validação (Zod).</p>`
+    },
+    params:{
+      title:'request.params — pedaços do endereço',
+      chip:':id / params', chipClass:'blk-op',
+      body:`<p>Na rota <code>'/users/:id'</code>, os dois pontos dizem: "esse pedaço muda".</p>
+        <p class="tm-example">Pedido para <code>/users/<b>abc-123</b></code> → <code>request.params.id</code> vale <code>"abc-123"</code>.</p>
+        <p class="tm-example"><b>params × body</b>: o params fica <b>no endereço</b> e diz <b>quem</b> (qual usuário). O body vai <b>dentro do pedido</b> e diz <b>o quê</b> (os dados).</p>`
+    },
+    randomuuid:{
+      title:'randomUUID() — um id que não se repete',
+      chip:'randomUUID()', chipClass:'blk-func',
+      body:`<p>Na migration, a coluna <code>id</code> é do tipo <b>uuid</b>: um código longo e aleatório, tipo <code>8f3c1a2e-4b7d-4e2a-9c1f-...</code>.</p>
+        <p class="tm-example">O <code>randomUUID()</code> gera um desses. A chance de repetir é tão pequena que, na prática, nunca acontece.</p>
+        <p class="tm-example">Já vem com o Node, não precisa instalar nada: <code>import { randomUUID } from 'node:crypto'</code>.</p>`
+    },
+    httpstatus:{
+      title:'status HTTP — como foi o pedido',
+      chip:'status', chipClass:'blk-var',
+      body:`<p>Todo pedido volta com um número que resume o resultado:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li><b>200</b> OK: deu certo (o padrão quando só damos return)</li>
+          <li><b>201</b> Created: criou algo novo</li>
+          <li><b>204</b> No Content: deu certo, resposta vazia</li>
+          <li><b>404</b> Not Found: não achou</li>
+        </ul>
+        <p class="tm-example">Regra rápida: começou com <b>2</b>, deu certo. Começou com <b>4</b>, o pedido tem problema. Começou com <b>5</b>, o erro é no servidor.</p>`
+    },
+    driver:{
+      title:'better-sqlite3: o driver do SQLite',
+      chip:'better-sqlite3', chipClass:'blk-var',
+      body:`<p>O Node sozinho não sabe ler nem escrever no arquivo do SQLite. O <b>better-sqlite3</b> sabe: abre o arquivo, executa o SQL e traz a resposta.</p>
+        <p class="tm-example"><code>seu código → knex → better-sqlite3 → db.sqlite</code></p>
+        <p class="tm-example"><b>Por que instalar os dois?</b> O knex funciona com vários bancos, mas não traz o driver de nenhum. Você instala o do banco que vai usar:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li>SQLite: <code>better-sqlite3</code> (o nosso)</li>
+          <li>PostgreSQL: <code>pg</code></li>
+          <li>MySQL: <code>mysql2</code></li>
+        </ul>
+        <p class="tm-example">É por isso que a configuração do knex tem <code>client: "better-sqlite3"</code>. Sem ele instalado, dá <b>Cannot find module 'better-sqlite3'</b>.</p>`
+    },
+    save:{
+      title:'--save: sobra do npm antigo',
+      chip:'--save', chipClass:'blk-op',
+      body:`<p>Até o npm 5 (2017), o <code>npm install knex</code> só baixava o pacote pro <code>node_modules</code>. <b>Não anotava</b> nada no package.json.</p>
+        <p class="tm-example">Precisava do <b>--save</b> pra ele aparecer em <code>"dependencies"</code>. Sem isso, quem baixasse o projeto e rodasse <code>npm install</code> ficava sem o knex.</p>
+        <p class="tm-example">Hoje salvar no package.json <b>já é o padrão</b>. Os dois comandos fazem exatamente a mesma coisa:</p>
+        <ul style="margin:6px 0 6px 18px;line-height:1.6">
+          <li><code>npm install knex --save</code></li>
+          <li><code>npm install knex</code></li>
+        </ul>
+        <p class="tm-example">O <b>-D</b> continua importando: ele manda pra <code>devDependencies</code> (só pra desenvolver, como tsx e typescript).</p>`
+    }
+  };
+
+  function openTerm(key){
+    const t=TERMS[key]; if(!t) return;
+    tmTitle.textContent=t.title;
+    tmChip.textContent=t.chip;
+    tmChip.className='tm-chip blk '+t.chipClass;
+    tmBody.innerHTML=t.body;
+    termOverlay.classList.add('open');
+  }
+  function closeTerm(){ termOverlay.classList.remove('open'); }
+  document.querySelectorAll('[data-term]').forEach(el=>{
+    el.addEventListener('click',e=>{ e.stopPropagation(); openTerm(el.dataset.term); });
+    el.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); openTerm(el.dataset.term); }
+    });
+  });
+  tmClose.addEventListener('click',e=>{e.stopPropagation();closeTerm()});
+  termOverlay.addEventListener('click',e=>{ if(e.target===termOverlay) closeTerm(); });
+  termModal.addEventListener('click',e=>e.stopPropagation());
+
+  const maxStep=s=>slides[s].querySelectorAll('[data-step]').length
+    ? Math.max(0,...[...slides[s].querySelectorAll('[data-step]')].map(e=>+e.dataset.step)) : 0;
+
+  function render(){
+    slides.forEach((s,i)=>s.classList.toggle('active',i===si));
+    slides[si].querySelectorAll('[data-step]').forEach(el=>{
+      const on=+el.dataset.step<=step, was=el.dataset.shown==='1';
+      if(on && !was){
+        el.classList.add('reveal'); el.dataset.shown='1';
+        if(el.classList.contains('code-line')){ el.classList.remove('reveal'); void el.offsetWidth; el.classList.add('reveal'); }
+      }else if(!on && was){ el.classList.remove('reveal'); el.dataset.shown='0'; }
+    });
+    let done=0,total=0;
+    slides.forEach((s,i)=>{const m=maxStep(i)+1; total+=m; done+=i<si?m:(i===si?step+1:0)});
+    progFill.style.width=(done/total*100)+'%';
+    count.textContent=String(si+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    updateDrawer();
+  }
+  function next(){ if(step<maxStep(si)) step++; else if(si<slides.length-1){si++;step=0;} render(); }
+  function prev(){ if(step>0) step--; else if(si>0){si--;step=maxStep(si);} render(); }
+  function goto(i){ si=Math.max(0,Math.min(slides.length-1,i)); step=0; render(); }
+
+  document.getElementById('next').addEventListener('click',e=>{e.stopPropagation();next()});
+  document.getElementById('prev').addEventListener('click',e=>{e.stopPropagation();prev()});
+  document.getElementById('fs').addEventListener('click',e=>{e.stopPropagation(); document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.();});
+  infoBtn.addEventListener('click',e=>{e.stopPropagation();toggleDrawer()});
+  document.getElementById('closeNotes').addEventListener('click',e=>{e.stopPropagation();closeDrawer()});
+  drawer.addEventListener('click',e=>e.stopPropagation());
+  stage.addEventListener('click',e=>{ if(!e.target.closest('.navbtn') && !e.target.closest('[data-term]')) next(); });
+  document.addEventListener('keydown',e=>{
+    if(termOverlay.classList.contains('open')){
+      if(e.key==='Escape'){ closeTerm(); }
+      return;
+    }
+    switch(e.key){
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown': case 'Enter': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); goto(0); break;
+      case 'End': e.preventDefault(); goto(slides.length-1); break;
+      case 'f': case 'F': document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.(); break;
+      case 'i': case 'I': e.preventDefault(); toggleDrawer(); break;
+      case 'Escape': closeDrawer(); break;
+    }
+  });
+
+  // botao copiar: pega o texto de cada linha do bloco (sem o titulo) e manda pro Ctrl+C
+  function codeText(out){
+    return [...out.children].filter(el=>!el.classList.contains('bar') && !el.classList.contains('copy-btn'))
+      .map(el=>el.textContent.replace(/\u00a0/g,' ').replace(/\s+$/,'')).join('\n').replace(/^\n+|\n+$/g,'');
+  }
+  function copyText(text){
+    if(navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise((ok,fail)=>{
+      const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy') ? ok() : fail(); }catch(err){ fail(err); }
+      ta.remove();
+    });
+  }
+  document.querySelectorAll('.output').forEach(out=>{
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='copy-btn'; btn.textContent='copiar'; btn.setAttribute('aria-label','Copiar código');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation(); btn.blur();
+      copyText(codeText(out)).then(()=>{ btn.textContent='copiado!'; btn.classList.add('done'); },
+        ()=>{ btn.textContent='erro'; })
+        .finally(()=>setTimeout(()=>{ btn.textContent='copiar'; btn.classList.remove('done'); },1500));
+    });
+    btn.addEventListener('keydown',e=>e.stopPropagation());
+    out.appendChild(btn);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

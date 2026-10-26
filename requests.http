@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:3333
+
+# CRUD de users
+
+### CREATE - cria um usuário
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "name": "joao",
+    "email": "joao@email.com",
+    "password": "9999"
+}
+
+###
+# Passo a passo:
+# 1. Rode o POST acima
+# 2. Na resposta, copie o valor de "id"
+# 3. Cole aqui embaixo, no lugar de COLE-O-ID-AQUI
+# As rotas com /:id usam esse valor
+@userId = COLE-O-ID-AQUI
+
+### READ - lista todos os usuários
+GET {{baseUrl}}/users
+
+### READ - busca um usuário pelo id (rota ainda não criada)
+GET {{baseUrl}}/users/{{userId}}
+
+### UPDATE - atualiza um usuário (rota ainda não criada)
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+    "name": "joao silva",
+    "email": "joao.silva@email.com",
+    "password": "1234"
+}
+
+### DELETE - remove um usuário (rota ainda não criada)
+DELETE {{baseUrl}}/users/{{userId}}

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backend I · Aula 03 — Organizando as rotas (Node)</title>
+<style>
+@font-face{
+  font-family:"Galmuri11";
+  src:url("data:font/woff2;base64,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") format("woff2");
+  font-display:block;
+}
+
+:root{
+  --bg:#191b22; --bg2:#20232d; --panel:#242834; --grid:rgba(255,255,255,.028);
+  --ink:#f3efe4; --muted:#8b909d; --accent:#f0a437; --accent-dim:#7a5a1f;
+  --green:#5fbf7a; --blue:#6db6ff;
+
+  --c-var:#8f5fd4;   --c-var-t:#fff;
+  --c-op:#cf4a3a;    --c-op-t:#fff;
+  --c-func:#d99a3e;  --c-func-t:#2a2116;
+  --c-kw:#3f83d6;    --c-kw-t:#fff;
+  --c-tag:#2fa58c;   --c-tag-t:#08221d;
+  --c-str:#c4c8d1;   --c-str-t:#22252e;
+  --c-strq:#e6c341;  --c-strq-t:#332a08;
+  --c-punct:#5f6572; --c-punct-t:#e8ebf0;
+  --c-go:#41a6c4;    --c-go-t:#04222b;
+
+  --pixel:polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Galmuri11",monospace; background:var(--bg); color:var(--ink);
+  overflow:hidden; -webkit-font-smoothing:none; font-smooth:never;
+  image-rendering:pixelated; letter-spacing:.3px;
+}
+
+#stage{
+  position:fixed; inset:0; cursor:pointer;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--bg2), var(--bg) 62%),
+    repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 44px);
+}
+#stage::after{content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 220px 40px rgba(0,0,0,.55)}
+
+.slide{position:absolute; inset:0; display:none; flex-direction:column; justify-content:center; align-items:flex-start; padding:6vh 8vw 12vh; gap:22px}
+.slide.active{display:flex}
+
+.eyebrow{color:var(--accent); font-size:clamp(13px,1.6vw,20px); letter-spacing:3px}
+.eyebrow .sq{display:inline-block;width:.55em;height:.55em;background:var(--accent);margin-right:.5em;transform:translateY(-.1em)}
+
+h1{font-size:clamp(34px,6.4vw,84px); line-height:1.06; font-weight:400; text-shadow:4px 4px 0 rgba(0,0,0,.45)}
+h1 .hl{color:var(--accent)}
+h2{font-size:clamp(24px,4.4vw,56px); line-height:1.1; font-weight:400; text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.sub{color:var(--muted); font-size:clamp(15px,2.2vw,28px); line-height:1.35; max-width:36ch}
+.lead{font-size:clamp(17px,2.6vw,33px); line-height:1.4; max-width:32ch}
+.big{font-size:clamp(23px,3.9vw,50px); line-height:1.25}
+.big .hl{color:var(--accent)} .big .warn{color:var(--c-op)} .big .grn{color:var(--green)}
+
+[data-step]{opacity:0; transform:translateY(16px); transition:opacity .4s ease, transform .4s ease}
+[data-step].reveal{opacity:1; transform:none}
+
+.rows{display:flex; flex-direction:column; gap:14px; width:100%}
+.anatomy-cap{display:flex; flex-direction:column; gap:14px; width:100%; margin-top:6px}
+.row{display:flex; align-items:flex-start; gap:16px; font-size:clamp(15px,2.2vw,30px); line-height:1.3}
+.row .mk{color:var(--accent); flex:none} .row .mk.ok{color:var(--green)}
+.row small{color:var(--muted); font-size:.8em}
+.num{flex:none; display:inline-flex; align-items:center; justify-content:center; width:1.7em; height:1.7em; background:var(--c-var); color:#fff; clip-path:var(--pixel); box-shadow:inset 5px 5px 0 rgba(255,255,255,.28),inset -5px -5px 0 rgba(0,0,0,.3); font-size:.8em}
+.vtag{flex:none; display:inline-flex; align-items:center; justify-content:center; min-width:3.2em; padding:.35em .6em; clip-path:var(--pixel); font-size:.72em; box-shadow:inset 5px 5px 0 rgba(255,255,255,.22),inset -5px -5px 0 rgba(0,0,0,.32); text-shadow:2px 2px 0 rgba(0,0,0,.25)}
+
+.panel{background:var(--panel); clip-path:var(--pixel); padding:20px 24px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.05),inset -6px -6px 0 rgba(0,0,0,.35); font-size:clamp(15px,2.2vw,28px); line-height:1.35}
+.panel.accent{color:var(--accent)}
+.panel .cap{color:var(--muted); font-size:.7em; display:block; margin-bottom:.4em; letter-spacing:2px}
+.panel .big-num{font-size:clamp(38px,6.5vw,84px); color:var(--accent); display:block; line-height:1; margin-bottom:.15em}
+
+/* grids */
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px; width:100%}
+.codes{display:flex; flex-wrap:wrap; align-items:flex-start; gap:18px; max-width:100%}
+.codes .output{max-width:100%}
+.langgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px 26px; width:100%}
+.card{background:var(--panel); clip-path:var(--pixel); padding:18px 22px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.05),inset -6px -6px 0 rgba(0,0,0,.38)}
+.card .co{font-size:clamp(18px,2.6vw,32px); display:flex; align-items:center; gap:12px; margin-bottom:8px}
+.card .fact{color:var(--muted); font-size:clamp(13px,1.8vw,22px); line-height:1.3}
+.card .fact b{color:var(--ink)}
+
+/* blocos lego */
+.code-line{display:flex; flex-wrap:wrap; align-items:center; gap:10px; opacity:1 !important; transform:none !important; margin:4px 0}
+.blk-wrap{filter:drop-shadow(0 6px 0 rgba(0,0,0,.5))}
+.blk{display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; font-size:clamp(18px,2.7vw,36px); color:#fff; clip-path:var(--pixel);
+  box-shadow:inset 6px 6px 0 rgba(255,255,255,.30),inset -6px -6px 0 rgba(0,0,0,.34); text-shadow:2px 2px 0 rgba(0,0,0,.32);
+  opacity:0; transform:translateY(-22px) scale(.94)}
+.code-line.reveal .blk{animation:drop .34s cubic-bezier(.2,.9,.25,1.15) both; animation-delay:calc(var(--i,0)*70ms)}
+@keyframes drop{0%{opacity:0;transform:translateY(-22px) scale(.94)} 62%{opacity:1;transform:translateY(3px) scale(1.01)} 100%{opacity:1;transform:translateY(0) scale(1)}}
+.blk-var{background:var(--c-var);color:var(--c-var-t)}
+.blk-op{background:var(--c-op);color:var(--c-op-t)}
+.blk-func{background:var(--c-func);color:var(--c-func-t);text-shadow:2px 2px 0 rgba(255,255,255,.2)}
+.blk-kw{background:var(--c-kw);color:var(--c-kw-t)}
+.blk-tag{background:var(--c-tag);color:var(--c-tag-t);text-shadow:2px 2px 0 rgba(255,255,255,.18)}
+.blk-str{background:var(--c-str);color:var(--c-str-t);text-shadow:2px 2px 0 rgba(255,255,255,.35)}
+.blk-strq{background:var(--c-strq);color:var(--c-strq-t);text-shadow:2px 2px 0 rgba(255,255,255,.25)}
+.blk-punct{background:var(--c-punct);color:var(--c-punct-t)}
+.chip{display:inline-flex;opacity:1;transform:none;padding:6px 12px;font-size:.8em;flex:none}
+.chip[data-term]{cursor:pointer;position:relative;transition:transform .12s ease,box-shadow .12s ease}
+.chip[data-term]:hover{transform:translateY(-3px);box-shadow:inset 6px 6px 0 rgba(255,255,255,.30),inset -6px -6px 0 rgba(0,0,0,.34),0 4px 0 rgba(0,0,0,.35)}
+.chip[data-term]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.chip[data-term]::after{content:"?";position:absolute;top:-8px;right:-8px;width:1.3em;height:1.3em;border-radius:0;background:var(--accent);color:#241a05;font-size:.6em;display:flex;align-items:center;justify-content:center;clip-path:var(--pixel);box-shadow:0 2px 0 rgba(0,0,0,.4)}
+
+.panel:has(.info-ic){position:relative; padding-right:64px}
+.info-ic{position:absolute; top:14px; right:14px; width:1.6em; height:1.6em; display:flex; align-items:center; justify-content:center;
+  background:var(--accent); color:#241a05; font-size:.75em; cursor:pointer; clip-path:var(--pixel);
+  box-shadow:inset 4px 4px 0 rgba(255,255,255,.3),inset -4px -4px 0 rgba(0,0,0,.3); transition:transform .12s ease}
+.info-ic:hover{transform:translateY(-3px)}
+.info-ic:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+
+/* modal de termo */
+#termOverlay{position:fixed;inset:0;z-index:50;background:rgba(8,9,13,.72);display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity .2s ease}
+#termOverlay.open{opacity:1;pointer-events:auto}
+#termModal{background:var(--panel);clip-path:var(--pixel);max-width:min(560px,92vw);max-height:80vh;overflow-y:auto;
+  padding:28px 30px;box-shadow:inset 6px 6px 0 rgba(255,255,255,.07),inset -8px -8px 0 rgba(0,0,0,.45),0 20px 0 rgba(0,0,0,.3);
+  transform:translateY(18px) scale(.97);transition:transform .22s cubic-bezier(.2,.9,.25,1.1);}
+#termOverlay.open #termModal{transform:none}
+#termModal .tm-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+#termModal .tm-chip{flex:none}
+#termModal .tm-title{font-size:clamp(20px,3vw,28px);color:var(--ink)}
+#termModal .tm-close{margin-left:auto;background:none;border:none;color:var(--muted);font-family:inherit;font-size:26px;cursor:pointer;width:36px;height:36px;line-height:1}
+#termModal .tm-close:hover{color:var(--accent)}
+#termModal .tm-body{font-size:clamp(15px,2vw,19px);line-height:1.55;color:#cdd2dc}
+#termModal .tm-body p{margin-bottom:12px}
+#termModal .tm-body .tm-example{margin-top:6px}
+#termModal .tm-body b{color:#fff}
+
+.output{display:inline-flex; flex-direction:column; gap:8px; background:#0f1116; clip-path:var(--pixel); padding:18px 24px; font-size:clamp(16px,2.4vw,32px); box-shadow:inset 5px 5px 0 rgba(255,255,255,.04),inset -6px -6px 0 rgba(0,0,0,.5)}
+.output .bar{color:var(--muted); font-size:.62em; letter-spacing:2px}
+.output .val{color:var(--green)}
+
+/* botao copiar nos blocos de codigo */
+.output{position:relative; padding-right:84px !important}
+.copy-btn{position:absolute; top:8px; right:10px; z-index:2; border:none; cursor:pointer; font-family:inherit; font-size:12px; letter-spacing:1px;
+  padding:6px 10px; background:var(--panel); color:var(--ink); clip-path:var(--pixel);
+  box-shadow:inset 3px 3px 0 rgba(255,255,255,.08),inset -3px -3px 0 rgba(0,0,0,.4); transition:transform .08s ease, background .15s}
+.copy-btn:hover{background:var(--accent-dim)} .copy-btn:active{transform:translateY(2px)}
+.copy-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.copy-btn.done{background:var(--green); color:#08221d}
+
+/* diagrama cliente/servidor */
+.diagram{display:flex; align-items:center; gap:20px; flex-wrap:wrap; width:100%; font-size:clamp(14px,2vw,26px)}
+.node{background:var(--panel); clip-path:var(--pixel); padding:20px 26px; text-align:center; min-width:160px; box-shadow:inset 5px 5px 0 rgba(255,255,255,.06),inset -6px -6px 0 rgba(0,0,0,.4)}
+.node .ic{font-size:1.4em; color:var(--accent); display:block; margin-bottom:6px}
+.arrows{display:flex; flex-direction:column; gap:14px; flex:1; min-width:180px}
+.arrow{display:flex; align-items:center; gap:10px; color:var(--muted)}
+.arrow .line{flex:1; height:6px; background:repeating-linear-gradient(90deg,var(--accent) 0 12px,transparent 12px 20px)}
+.arrow.back{flex-direction:row-reverse; color:var(--blue)}
+.arrow.back .line{background:repeating-linear-gradient(90deg,#3f83d6 0 12px,transparent 12px 20px)}
+.arrow .tip{color:var(--accent)} .arrow.back .tip{color:var(--blue)}
+.arrow .lbl{font-size:.8em; white-space:nowrap}
+
+.hint{color:var(--muted); font-size:clamp(14px,1.8vw,22px); letter-spacing:2px; animation:blink 1.2s steps(2) infinite}
+.hint .k{color:var(--accent)}
+@keyframes blink{50%{opacity:.25}}
+
+/* chrome */
+#bar{position:fixed; left:0; right:0; bottom:0; height:56px; display:flex; align-items:center; gap:16px; padding:0 18px; background:rgba(12,13,17,.75); border-top:2px solid rgba(255,255,255,.06); font-size:13px; letter-spacing:2px; color:var(--muted); z-index:20}
+#bar .brand{color:var(--ink)} #bar .brand b{color:var(--accent); font-weight:400}
+#prog{flex:1; height:10px; background:#0e0f14; clip-path:var(--pixel); box-shadow:inset 0 0 0 2px rgba(255,255,255,.05)}
+#prog i{display:block; height:100%; width:0; background:var(--accent); transition:width .35s ease}
+#count{color:var(--ink); min-width:70px; text-align:right}
+
+.navbtn{position:fixed; bottom:70px; z-index:20; width:64px; height:64px; border:none; cursor:pointer; background:var(--panel); color:var(--ink); font-family:inherit; font-size:30px; clip-path:var(--pixel); box-shadow:inset 6px 6px 0 rgba(255,255,255,.08),inset -6px -6px 0 rgba(0,0,0,.4); transition:transform .08s ease, background .15s}
+.navbtn:hover{background:#2e3342} .navbtn:active{transform:translateY(3px)} .navbtn:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+#prev{left:18px} #next{right:18px; background:var(--accent-dim)} #next:hover{background:#8f6a24}
+.fs{position:fixed; top:16px; right:18px; z-index:20; width:46px; height:46px; font-size:18px}
+
+@media (max-width:760px){
+  .slide{padding:5vh 6vw 14vh}
+  .navbtn{width:52px; height:52px; font-size:24px; bottom:66px}
+  .diagram{flex-direction:column; align-items:stretch}
+  .arrows{min-width:0}
+  .grid2,.langgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  [data-step],#prog i{transition:none}
+  .code-line.reveal .blk{animation:none; opacity:1; transform:none}
+  .blk{opacity:1; transform:none}
+  .hint{animation:none}
+}
+
+/* botao info + drawer de notas do professor */
+.info{position:fixed;top:70px;right:18px;z-index:22;width:46px;height:46px;font-size:24px}
+.info.active{background:var(--accent-dim)}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,88vw);background:var(--bg2);z-index:40;
+  transform:translateX(100%);transition:transform .32s cubic-bezier(.3,.8,.3,1);
+  display:flex;flex-direction:column;border-left:3px solid var(--accent);
+  box-shadow:-10px 0 0 rgba(0,0,0,.4), inset 6px 0 0 rgba(255,255,255,.05)}
+#drawer.open{transform:none}
+.notes-head{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:2px solid rgba(255,255,255,.08);flex:none}
+.nh-title{color:var(--accent);letter-spacing:2px;font-size:15px;flex:1}
+.nh-num{color:var(--muted);font-size:13px}
+#closeNotes{background:none;border:none;color:var(--ink);font-family:inherit;font-size:24px;cursor:pointer;width:34px;height:34px;line-height:1}
+#closeNotes:hover{color:var(--accent)}
+.notes-body{padding:20px 22px;overflow-y:auto;font-size:15px;line-height:1.55}
+.notes-body h4{color:var(--accent);font-size:12px;letter-spacing:2px;margin:20px 0 7px}
+.notes-body h4:first-child{margin-top:0}
+.notes-body p{margin-bottom:11px}
+.notes-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:11px}
+.notes-body li{display:flex;gap:9px;align-items:flex-start}
+.notes-body li::before{content:"\25B8";color:var(--accent);flex:none}
+.notes-body b{color:#fff}
+.notes-body .warn{color:#e78a70;background:rgba(207,74,58,.1);padding:9px 12px;clip-path:var(--pixel)}
+.notes-body .time{color:var(--muted);font-size:13px;letter-spacing:1px}
+.notes-body .say{color:#cdd2dc;font-style:normal;border-left:3px solid var(--accent-dim);padding-left:11px}
+
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>VEM SER DEV · BACKEND I</div>
+    <h1>Organizando<br>as <span class="hl">rotas</span></h1>
+    <div class="sub" data-step="1">A API vai crescer: users, products e muito mais. Hoje a gente arruma a casa antes que vire bagunça.</div>
+    <div class="rows" data-step="2" style="margin-top:6px">
+      <div class="row"><span class="mk">▸</span><div>Por que o server.ts não pode guardar tudo</div></div>
+      <div class="row"><span class="mk">▸</span><div>Uma pasta <b>routes/</b>, um arquivo por assunto</div></div>
+      <div class="row"><span class="mk">▸</span><div>Ligando cada arquivo no servidor com <b>register</b> e <b>prefix</b></div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Aula de organização. Nenhuma funcionalidade nova para quem usa a API: as mesmas rotas continuam respondendo igual, só que cada uma no seu arquivo.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Lembre: na aula passada criamos o banco, a tabela users e as rotas GET e POST /users, tudo dentro do server.ts.</li><li>Deixe claro desde já: no fim da aula o comportamento é o mesmo. Se algo mudar no resultado, é bug.</li></ul>
+<h4>TEMPO</h4><p class="time">~3 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>ONDE PARAMOS</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O server.ts hoje</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.25vw,14px);padding:10px 16px">
+      <span class="bar">▤ src/server.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> fastify <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"fastify"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { env } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"./shared/env/environments.js"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { connection } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"./config/database.js"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { randomUUID } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"node:crypto"</span></span>
+      <span>&nbsp;</span>
+      <span><span style="color:var(--c-kw)">const</span> app = <span style="color:var(--c-func)">fastify</span>()</span>
+      <span>&nbsp;</span>
+      <span style="color:var(--accent)">app.get("/users", async () =&gt; { ... })</span>
+      <span style="color:var(--accent)">app.post("/users", async (request, reply) =&gt; { ... })</span>
+      <span>&nbsp;</span>
+      <span>app.<span style="color:var(--c-func)">listen</span>({ port: env.PORT })</span>
+    </div>
+    <div class="anatomy-cap" style="gap:6px">
+      <div class="row" data-step="2" style="font-size:clamp(12px,1.7vw,20px)"><span class="mk">▸</span><div>Liga o servidor <small>(fastify, listen, porta)</small></div></div>
+      <div class="row" data-step="3" style="font-size:clamp(12px,1.7vw,20px)"><span class="mk">▸</span><div>E <span style="color:var(--accent)">também</span> guarda todas as rotas de usuário</div></div>
+    </div>
+    <div class="lead" data-step="4" style="font-size:clamp(13px,1.9vw,22px)">Com 2 rotas ainda dá pra ler. E com 20?</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Partir do código que a turma já tem aberto, não de um exemplo inventado.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Peça pra todo mundo abrir o server.ts e conferir que está igual ao slide.</li><li>Destaque que o arquivo tem duas responsabilidades: ligar o servidor e definir rotas.</li></ul>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>O PROBLEMA</div>
+    <h2>Tudo num arquivo só</h2>
+    <div class="sub" data-step="1">Logo vêm <b>products</b>, <b>orders</b>, <b>categories</b>... Cada assunto com GET, POST, PUT, DELETE.</div>
+    <div class="grid2" data-step="2">
+      <div class="panel"><span class="cap">TUDO NO SERVER.TS</span><span style="color:var(--c-op)">500 linhas</span> misturando usuário, produto e pedido. Pra achar uma rota, só rolando a tela.</div>
+      <div class="panel"><span class="cap">UM ARQUIVO POR ASSUNTO</span><span style="color:var(--green)">users.routes.ts</span>, <span style="color:var(--green)">products.routes.ts</span>... Quer mexer em produto? Abre o arquivo de produto.</div>
+    </div>
+    <div class="panel accent" data-step="3"><span class="cap">PENSA ASSIM</span>Supermercado sem corredor: tudo numa pilha só. Funciona, mas ninguém acha nada. Rota separada por arquivo é colocar placa em cada corredor.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Criar a necessidade antes de mostrar a solução. Organização parece burocracia até a pessoa sentir a dor.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Pergunte: "se duas pessoas do time forem mexer em rotas diferentes no mesmo arquivo, o que acontece?" (conflito no Git, um atrapalha o outro).</li></ul>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>A IDEIA</div>
+    <h2>Cada um com seu papel</h2>
+    <div class="diagram" data-step="1">
+      <div class="node"><span class="ic">▣</span>server.ts<br><small style="color:var(--muted)">liga o servidor</small></div>
+      <div class="arrows">
+        <div class="arrow"><span class="line"></span><span class="tip">▶</span><span class="lbl">register</span></div>
+        <div class="arrow"><span class="line"></span><span class="tip">▶</span><span class="lbl">register</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="node"><span class="ic">▤</span>users.routes.ts<br><small style="color:var(--muted)">/users</small></div>
+        <div class="node"><span class="ic">▤</span>products.routes.ts<br><small style="color:var(--muted)">/products</small></div>
+      </div>
+    </div>
+    <div class="rows" data-step="2">
+      <div class="row"><span class="mk">▸</span><div><b>server.ts</b> só liga o servidor e diz quais arquivos de rota existem.</div></div>
+      <div class="row"><span class="mk">▸</span><div>Cada <b>arquivo de rota</b> cuida de um assunto só.</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Dar a imagem mental da arquitetura antes de abrir qualquer arquivo.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>O server.ts vira um "índice" do livro: não tem o conteúdo, só aponta onde cada capítulo está.</li></ul>
+<h4>TEMPO</h4><p class="time">~4 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>A NOVA PASTA</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Antes e depois</h2>
+    <div class="codes">
+      <div class="output" data-step="1" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 18px">
+        <span class="bar">▤ antes</span>
+        <span style="color:var(--c-tag)">src/</span>
+        <span style="color:var(--c-tag)">+-- config/</span>
+        <span style="color:var(--c-tag)">+-- shared/</span>
+        <span>`-- <span style="color:var(--c-op)">server.ts</span> <span style="color:var(--muted)">(tudo aqui)</span></span>
+      </div>
+      <div class="output" data-step="2" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 18px">
+        <span class="bar">▤ depois</span>
+        <span style="color:var(--c-tag)">src/</span>
+        <span style="color:var(--c-tag)">+-- config/</span>
+        <span style="color:var(--accent)">+-- routes/</span>
+        <span>|   +-- <span style="color:var(--accent)">users.routes.ts</span></span>
+        <span>|   `-- <span style="color:var(--accent)">products.routes.ts</span></span>
+        <span style="color:var(--c-tag)">+-- shared/</span>
+        <span>`-- <span style="color:var(--green)">server.ts</span> <span style="color:var(--muted)">(enxuto)</span></span>
+      </div>
+    </div>
+    <div class="lead" data-step="3" style="font-size:clamp(13px,1.9vw,22px)">Nome do arquivo = <b>assunto</b> + <b>.routes.ts</b>. Bateu o olho, sabe o que tem dentro.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Mostrar a meta da aula: onde cada arquivo vai parar.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Todo mundo cria agora a pasta <b>src/routes</b> no VS Code, ao lado de config e shared.</li><li>O ".routes" no nome é convenção, não regra do Fastify. Ajuda a achar o arquivo pela busca (Ctrl+P → "routes").</li></ul>
+<h4>TEMPO</h4><p class="time">~3 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>ANTES DO CÓDIGO</div>
+    <h2>O que é um "plugin"?</h2>
+    <div class="sub" data-step="1" style="max-width:48ch">O <b>app</b> nasce no server.ts. Se a rota vai pra outro arquivo, como esse arquivo faz <code>app.get(...)</code>?</div>
+    <div class="lead" data-step="2">Resposta: o outro arquivo vira uma <b>função que recebe o app</b>.</div>
+    <div class="codes" data-step="3">
+      <div class="output" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 16px">
+        <span class="bar">▤ users.routes.ts · "me dá o app"</span>
+        <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">usersRoutes</span>(<span style="color:var(--accent)">app</span>) {</span>
+        <span>&nbsp;&nbsp;<span style="color:var(--accent)">app</span>.get(<span style="color:var(--c-strq)">"/"</span>, ...)</span>
+        <span>}</span>
+      </div>
+      <div class="output" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 16px">
+        <span class="bar">▤ server.ts · "toma o app"</span>
+        <span><span style="color:var(--c-kw)">const</span> <span style="color:var(--accent)">app</span> = <span style="color:var(--c-func)">fastify</span>()</span>
+        <span>&nbsp;</span>
+        <span><span style="color:var(--accent)">app</span>.<span style="color:var(--c-func)">register</span>(usersRoutes)</span>
+      </div>
+    </div>
+    <div class="panel accent" data-step="4"><span class="cap">O REGISTER FAZ ISSO</span><code>app.register(usersRoutes)</code> ≈ <code>usersRoutes(app)</code><br><span style="color:var(--ink)">O Fastify chama a sua função e entrega o app pra ela.</span></div>
+    <div class="lead" data-step="5" style="font-size:clamp(14px,2vw,24px)"><b>Plugin</b> = o nome que o Fastify dá pra "função que recebe o app".</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Tirar o mistério da palavra "plugin": é só uma função comum que recebe o app como parâmetro. Nada de novo além de função com parâmetro.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Comece pela pergunta do step 1 e deixe a turma pensar: "o app está no server.ts, como o outro arquivo usa ele?". Alguém costuma sugerir "importar o app", e é aí que entra a ideia de receber por parâmetro.</li><li>Por que não importar o app direto do server.ts? Porque o server.ts importa as rotas: se as rotas importassem o server.ts, um arquivo dependeria do outro e vice-versa (import circular). Recebendo por parâmetro, o arquivo de rotas não precisa conhecer o server.ts.</li><li>Por que register e não chamar <b>usersRoutes(app)</b> direto? Porque o register também aceita opções, como o <b>prefix</b> do próximo slide, e o Fastify garante que as rotas estejam prontas antes de ligar o servidor.</li><li>Não entre em encapsulamento e hooks agora.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>UMA ETIQUETA PRO TYPESCRIPT</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O que é o FastifyInstance?</h2>
+    <div class="sub" data-step="1" style="max-width:52ch">É o <b>tipo</b> do app. Serve só pro TypeScript saber o que o app é.</div>
+    <div class="codes" data-step="2">
+      <div class="output" style="gap:1px;font-size:clamp(10px,1.3vw,15px);padding:10px 16px">
+        <span class="bar">▤ server.ts · o TS descobre sozinho</span>
+        <span><span style="color:var(--c-kw)">const</span> app = <span style="color:var(--c-func)">fastify</span>()</span>
+        <span style="color:var(--green)">// ele viu de onde o app veio</span>
+      </div>
+      <div class="output" style="gap:1px;font-size:clamp(10px,1.3vw,15px);padding:10px 16px">
+        <span class="bar">▤ users.routes.ts · sem o tipo</span>
+        <span><span style="color:var(--c-kw)">function</span> <span style="color:var(--c-func)">usersRoutes</span>(app) { ... }</span>
+        <span style="color:var(--c-op)">// erro: 'app' tem tipo 'any'</span>
+      </div>
+    </div>
+    <div class="sub" data-step="3" style="max-width:52ch">Parâmetro de função chega <b>sem</b> o tipo. O TS não sabe que o app tem <code>.get</code>, <code>.post</code>...</div>
+    <div class="output" data-step="4" style="gap:1px;font-size:clamp(10px,1.4vw,17px);padding:10px 16px">
+      <span class="bar">▤ users.routes.ts · com o tipo</span>
+      <span><span style="color:var(--c-kw)">import type</span> { FastifyInstance } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"fastify"</span></span>
+      <span><span style="color:var(--c-kw)">function</span> <span style="color:var(--c-func)">usersRoutes</span>(app<span style="color:var(--accent)">: FastifyInstance</span>) { ... }</span>
+      <span style="color:var(--green)">// "esse app é igual ao do server.ts" · autocomplete volta</span>
+    </div>
+    <div class="anatomy-cap" style="gap:5px">
+      <div class="row" data-step="5" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-kw chip" style="padding:3px 9px">Instance</span><div>instância: o objeto que o <code>fastify()</code> cria</div></div>
+      <div class="row" data-step="6" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-kw chip" style="padding:3px 9px">import type</span><div>é só tipo: some quando o TS vira JS, não muda nada rodando</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Explicar por que o arquivo de rotas precisa de um import que o server.ts não precisava.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Faça ao vivo: apague o <b>: FastifyInstance</b> e mostre o sublinhado vermelho no app. Digite "app." e mostre que o autocomplete não sugere nada. Coloque o tipo de volta e o autocomplete aparece.</li><li>Analogia: é uma etiqueta no parâmetro pra o VS Code saber o que tem dentro da caixa.</li><li>Não precisa entrar em interfaces/generics. Basta: tipo = descrição do formato do valor.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>MÃO NA MASSA · TODO MUNDO JUNTO</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Criando users.routes.ts</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:9px 15px">
+      <span class="bar">▤ src/routes/users.routes.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> type { FastifyInstance } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"fastify"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { randomUUID } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"node:crypto"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { connection } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"../config/database.js"</span></span>
+      <span>&nbsp;</span>
+      <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">usersRoutes</span>(app: FastifyInstance) {</span>
+      <span>&nbsp;&nbsp;app.<span style="color:var(--c-func)">get</span>(<span style="color:var(--c-strq)">"/"</span>, async () =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> connection(<span style="color:var(--c-strq)">"users"</span>).select(<span style="color:var(--c-strq)">"*"</span>)</span>
+      <span>&nbsp;&nbsp;})</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;&nbsp;app.<span style="color:var(--c-func)">post</span>(<span style="color:var(--c-strq)">"/"</span>, async (request, reply) =&gt; {</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> { name, email, password } = request.body <span style="color:var(--c-kw)">as</span> { ... }</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">const</span> user = { id: <span style="color:var(--c-func)">randomUUID</span>(), name, email, password }</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">await</span> connection(<span style="color:var(--c-strq)">"users"</span>).insert(user)</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> reply.status(<span style="color:var(--blue)">201</span>).send(user)</span>
+      <span>&nbsp;&nbsp;})</span>
+      <span>}</span>
+    </div>
+    <div class="anatomy-cap" style="gap:5px">
+      <div class="row" data-step="2" style="font-size:clamp(11px,1.5vw,17px)"><span class="blk blk-func chip" data-term="plugin" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 9px">usersRoutes</span><div>o plugin: uma função exportada que recebe o app</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(11px,1.5vw,17px)"><span class="blk blk-kw chip" data-term="instance" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 9px">FastifyInstance</span><div>o tipo do app, pro TypeScript saber o que tem nele</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(11px,1.5vw,17px)"><span class="blk blk-strq chip" style="padding:3px 9px;color:var(--c-strq-t)">"/"</span><div>a rota fica sem <b>/users</b>: quem coloca isso é o server.ts</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Mover as duas rotas que já existem, sem mudar o que elas fazem.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Faça literalmente recortar (Ctrl+X) do server.ts e colar aqui. Isso deixa claro que é o mesmo código.</li><li>Os imports de connection e randomUUID vêm junto, porque agora quem usa é este arquivo.</li><li>O caminho do import mudou: de "./config/database.js" para "../config/database.js", porque o arquivo está uma pasta mais fundo.</li><li>O "import type" diz que FastifyInstance é só um tipo: some quando o TS vira JS.</li></ul>
+<h4>ERROS QUE APARECEM</h4><ul><li><b>Cannot find module '.../config/database.js'</b>: esqueceu o "../" ou o ".js" no final.</li></ul>
+<h4>TEMPO</h4><p class="time">~10 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>LIGANDO NO SERVIDOR</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O server.ts enxuto</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.25vw,15px);padding:10px 16px">
+      <span class="bar">▤ src/server.ts</span>
+      <span><span style="color:var(--c-kw)">import</span> fastify <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"fastify"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { env } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"./shared/env/environments.js"</span></span>
+      <span><span style="color:var(--c-kw)">import</span> { usersRoutes } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"./routes/users.routes.js"</span></span>
+      <span>&nbsp;</span>
+      <span><span style="color:var(--c-kw)">const</span> app = <span style="color:var(--c-func)">fastify</span>()</span>
+      <span>&nbsp;</span>
+      <span style="color:var(--accent)">app.register(usersRoutes, { prefix: "/users" })</span>
+      <span>&nbsp;</span>
+      <span>app.<span style="color:var(--c-func)">listen</span>({ port: env.PORT }).then(() =&gt; {</span>
+      <span>&nbsp;&nbsp;console.log(<span style="color:var(--c-strq)">"Rodando na porta: "</span> + env.PORT)</span>
+      <span>})</span>
+    </div>
+    <div class="anatomy-cap" style="gap:6px">
+      <div class="row" data-step="2" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-func chip" data-term="register" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 9px">register</span><div>liga o arquivo de rotas no app</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(12px,1.6vw,18px)"><span class="blk blk-var chip" data-term="prefix" tabindex="0" role="button" aria-haspopup="dialog" style="padding:3px 9px">prefix</span><div>o começo do caminho de todas as rotas daquele arquivo</div></div>
+    </div>
+    <div class="lead" data-step="4" style="font-size:clamp(13px,1.9vw,22px)">Sem connection, sem randomUUID: o server.ts não sabe mais nada de usuário.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Mostrar o server.ts depois da limpeza: só liga o servidor e registra rotas.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Apague os imports que ficaram sem uso (connection, randomUUID). O VS Code deixa eles meio apagados.</li><li>Aproveite e troque o process.env.PORT do console.log por env.PORT, que já está validado.</li><li>Rode npm run dev e confirme que sobe sem erro antes de seguir.</li></ul>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>COMO A URL É MONTADA</div>
+    <h2>prefix + rota = URL final</h2>
+    <div class="rows" style="gap:12px">
+      <div class="row" data-step="1"><span class="vtag" style="background:var(--c-var)">/users</span><span class="mk">+</span><span class="vtag" style="background:var(--c-punct)">/</span><span class="mk">=</span><div><b>GET /users</b> <small>lista todos</small></div></div>
+      <div class="row" data-step="2"><span class="vtag" style="background:var(--c-var)">/users</span><span class="mk">+</span><span class="vtag" style="background:var(--c-punct)">/</span><span class="mk">=</span><div><b>POST /users</b> <small>cria um</small></div></div>
+      <div class="row" data-step="3"><span class="vtag" style="background:var(--c-var)">/users</span><span class="mk">+</span><span class="vtag" style="background:var(--c-punct)">/:id</span><span class="mk">=</span><div><b>GET /users/:id</b> <small>busca um (em breve)</small></div></div>
+    </div>
+    <div class="panel" data-step="4" style="color:#e78a70;background:rgba(207,74,58,.1)"><span class="cap">CUIDADO</span>Escrever <code>app.get("/users")</code> dentro do arquivo vira <b>/users/users</b>. O prefixo já foi colocado.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Desfazer a confusão mais comum da aula: onde fica o "/users".</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Se quiser mostrar o erro ao vivo: troque o "/" por "/users" no arquivo, rode GET /users e veja o 404. Depois GET /users/users funciona.</li><li>Vantagem extra: se um dia a rota virar /clientes, muda só o prefix no server.ts.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>AGORA É COM VOCÊS</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">O mesmo molde pra products</h2>
+    <div class="codes">
+      <div class="output" data-step="1" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:9px 15px">
+        <span class="bar">▤ src/routes/products.routes.ts</span>
+        <span><span style="color:var(--c-kw)">import</span> type { FastifyInstance } <span style="color:var(--c-kw)">from</span> <span style="color:var(--c-strq)">"fastify"</span></span>
+        <span>&nbsp;</span>
+        <span><span style="color:var(--c-kw)">export async function</span> <span style="color:var(--c-func)">productsRoutes</span>(app: FastifyInstance) {</span>
+        <span>&nbsp;&nbsp;app.<span style="color:var(--c-func)">get</span>(<span style="color:var(--c-strq)">"/"</span>, async () =&gt; {</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--c-kw)">return</span> [{ name: <span style="color:var(--c-strq)">"Teclado"</span> }]</span>
+        <span>&nbsp;&nbsp;})</span>
+        <span>}</span>
+      </div>
+      <div class="output" data-step="2" style="gap:1px;font-size:clamp(9px,1.2vw,14px);padding:9px 15px">
+        <span class="bar">▤ src/server.ts · acrescenta</span>
+        <span><span style="color:var(--c-kw)">import</span> { productsRoutes } <span style="color:var(--c-kw)">from</span></span>
+        <span>&nbsp;&nbsp;<span style="color:var(--c-strq)">"./routes/products.routes.js"</span></span>
+        <span>&nbsp;</span>
+        <span>app.register(usersRoutes, { prefix: <span style="color:var(--c-strq)">"/users"</span> })</span>
+        <span style="color:var(--accent)">app.register(productsRoutes, { prefix: "/products" })</span>
+      </div>
+    </div>
+    <div class="rows" data-step="3" style="gap:6px">
+      <div class="row" style="font-size:clamp(12px,1.6vw,19px)"><span class="num">1</span><div>Cria o arquivo na pasta <b>routes</b></div></div>
+      <div class="row" style="font-size:clamp(12px,1.6vw,19px)"><span class="num">2</span><div>Exporta uma função que recebe o <b>app</b></div></div>
+      <div class="row" style="font-size:clamp(12px,1.6vw,19px)"><span class="num">3</span><div>Uma linha de <b>register</b> no server.ts</div></div>
+    </div>
+    <div class="lead" data-step="4" style="font-size:clamp(13px,1.9vw,22px)">Assunto novo = arquivo novo + uma linha no server.ts. Sempre assim.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>A turma repete o padrão sozinha, pra fixar.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Dê uns 8 minutos antes de mostrar o step 1 e 2 (ou mostre só a lista de 3 passos primeiro).</li><li>Ainda não existe tabela products: por isso a rota devolve uma lista fixa. A migration de products pode virar exercício de casa (npm run knex -- migrate:make create_products).</li></ul>
+<h4>TEMPO</h4><p class="time">~12 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>HORA DA VERDADE</div>
+    <h2>Testando: nada mudou por fora</h2>
+    <div class="output" data-step="1" style="gap:2px;font-size:clamp(11px,1.5vw,18px);padding:10px 18px">
+      <span class="bar">▤ requests.http</span>
+      <span class="val">GET {{baseUrl}}/users</span>
+      <span class="val">POST {{baseUrl}}/users</span>
+      <span class="val">GET {{baseUrl}}/products</span>
+    </div>
+    <div class="grid2" data-step="2">
+      <div class="panel"><span class="cap">/USERS</span>Responde igual a antes: lista e cria usuário no banco.</div>
+      <div class="panel"><span class="cap">/PRODUCTS</span>Rota nova, responde a lista fixa.</div>
+    </div>
+    <div class="lead" data-step="3">Quem usa a API não percebe nada. Quem mantém o código agradece.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Provar que a reorganização não quebrou nada. Isso tem nome: <b>refatoração</b>, mudar a estrutura sem mudar o comportamento.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Atualize o requests.http: a rota /hello2 do arquivo não existe mais, troque pelos três pedidos do slide.</li><li>Rode o POST e depois o GET /users pra mostrar o usuário salvo de verdade.</li></ul>
+<h4>TEMPO</h4><p class="time">~6 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:12px">
+    <div class="eyebrow"><span class="sq"></span>QUANDO DÁ ERRADO</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">Erros que vão aparecer</h2>
+    <div class="rows" style="gap:10px">
+      <div class="row" data-step="1" style="font-size:clamp(12px,1.7vw,20px)"><span class="vtag" style="background:var(--c-op)">404</span><div>Esqueceu o <b>app.register</b> no server.ts, ou repetiu o caminho e criou <b>/users/users</b>.</div></div>
+      <div class="row" data-step="2" style="font-size:clamp(12px,1.7vw,20px)"><span class="vtag" style="background:var(--c-op)">módulo</span><div><b>Cannot find module</b>: faltou o <b>.js</b> no import, ou o <b>../</b> pra sair da pasta routes.</div></div>
+      <div class="row" data-step="3" style="font-size:clamp(12px,1.6vw,20px)"><span class="vtag" style="background:var(--c-op)">export</span><div><b>does not provide an export named</b>: esqueceu o <b>export</b> antes da função, ou o nome está diferente no import.</div></div>
+      <div class="row" data-step="4" style="font-size:clamp(12px,1.7vw,20px)"><span class="vtag" style="background:var(--c-op)">tipo</span><div>TypeScript reclamando de <b>app</b>: faltou o <b>: FastifyInstance</b> no parâmetro.</div></div>
+    </div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Antecipar os erros que mais aparecem nessa aula, pra turma reconhecer a mensagem quando ela surgir.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Por que o .js se o arquivo é .ts? O projeto usa "type": "module" e o TS resolve o .js para o .ts. É a regra dos imports em ESM.</li><li>Se o servidor nem sobe: olhar o terminal do npm run dev, a primeira linha vermelha diz o arquivo e a linha.</li></ul>
+<h4>TEMPO</h4><p class="time">~5 min</p></div>
+  </section>
+
+  <section class="slide" style="gap:10px">
+    <div class="eyebrow"><span class="sq"></span>O QUE CONSTRUÍMOS HOJE</div>
+    <h2 style="font-size:clamp(20px,3.6vw,42px)">A estrutura do projeto</h2>
+    <div class="output" data-step="1" style="gap:1px;font-size:clamp(10px,1.35vw,16px);padding:10px 18px">
+      <span class="bar">▤ árvore do projeto</span>
+      <span style="color:var(--c-tag)">curso-main/</span>
+      <span style="color:var(--c-tag)">+-- src/</span>
+      <span style="color:var(--c-tag)">|   +-- config/</span>
+      <span>|   |   `-- <span style="color:var(--muted)">database.ts</span></span>
+      <span style="color:var(--accent)">|   +-- routes/</span>
+      <span>|   |   +-- <span style="color:var(--accent)">users.routes.ts</span></span>
+      <span>|   |   `-- <span style="color:var(--accent)">products.routes.ts</span></span>
+      <span style="color:var(--c-tag)">|   +-- shared/</span>
+      <span style="color:var(--c-tag)">|   |   +-- database/migrations/</span>
+      <span style="color:var(--c-tag)">|   |   `-- env/</span>
+      <span>|   `-- <span style="color:var(--green)">server.ts</span>  <span style="color:var(--muted)">(só liga e registra)</span></span>
+      <span style="color:var(--muted)">+-- db.sqlite</span>
+      <span style="color:var(--muted)">+-- knexfile.ts</span>
+      <span style="color:var(--muted)">`-- package.json</span>
+    </div>
+    <div class="lead" data-step="2" style="font-size:clamp(13px,1.9vw,22px)">Em <span style="color:var(--accent)">laranja</span>, o que nasceu hoje. Em <span style="color:var(--green)">verde</span>, o que emagreceu.</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Fechar mostrando onde cada peça mora agora.</p>
+<h4>CONDUZA ASSIM</h4><ul><li>Compare com a árvore do fim da aula 2: só entrou a pasta routes.</li></ul>
+<h4>TEMPO</h4><p class="time">~3 min</p></div>
+  </section>
+
+  <section class="slide">
+    <div class="eyebrow"><span class="sq"></span>FECHAMENTO</div>
+    <h2>O que vocês aprenderam hoje</h2>
+    <div class="rows" data-step="1">
+      <div class="row"><span class="mk ok">▸</span><div>Por que separar: um arquivo por assunto, fácil de achar e de mexer.</div></div>
+      <div class="row"><span class="mk ok">▸</span><div>Plugin no Fastify: função que recebe o app e cria rotas.</div></div>
+      <div class="row"><span class="mk ok">▸</span><div><b>register</b> + <b>prefix</b> pra ligar cada arquivo no servidor.</div></div>
+    </div>
+    <div class="panel accent" data-step="2"><span class="cap">PRÓXIMA AULA</span>Validar o corpo das requisições com Zod e completar o CRUD de users.</div>
+    <div class="hint" data-step="3">fim da AULA 03 · valeu!</div>
+    <div class="pnote" hidden><h4>OBJETIVO</h4><p>Recapitular: a API faz o mesmo de antes, mas agora está pronta pra crescer.</p>
+<h4>TEMPO</h4><p class="time">~2 min</p></div>
+  </section>
+
+</div>
+
+<button id="prev" class="navbtn" aria-label="Voltar">◀</button>
+<button id="next" class="navbtn" aria-label="Avançar">▶</button>
+<button id="fs" class="navbtn fs" aria-label="Tela cheia">⤢</button>
+<button id="info" class="navbtn info" aria-label="Notas do professor" title="Notas do professor (tecla i)">i</button>
+
+<aside id="drawer">
+  <div class="notes-head">
+    <span class="nh-title">NOTAS DO PROFESSOR</span>
+    <span class="nh-num" id="notesNum">01 / 15</span>
+    <button id="closeNotes" aria-label="Fechar notas">×</button>
+  </div>
+  <div class="notes-body" id="notesBody"></div>
+</aside>
+
+<div id="termOverlay" role="dialog" aria-modal="true">
+  <div id="termModal">
+    <div class="tm-head">
+      <span class="tm-chip"></span>
+      <span class="tm-title" id="tmTitle"></span>
+      <button class="tm-close" id="tmClose" aria-label="Fechar">×</button>
+    </div>
+    <div class="tm-body" id="tmBody"></div>
+  </div>
+</div>
+
+<div id="bar">
+  <span class="brand"><b>BACKEND I</b> · Organizando as rotas</span>
+  <div id="prog"><i></i></div>
+  <span id="count">01 / 15</span>
+</div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const stage=document.getElementById('stage');
+  const progFill=document.querySelector('#prog i');
+  const count=document.getElementById('count');
+  let si=0, step=0;
+
+  const drawer=document.getElementById('drawer');
+  const infoBtn=document.getElementById('info');
+  const notesBody=document.getElementById('notesBody');
+  const notesNum=document.getElementById('notesNum');
+  let drawerOpen=false;
+  function updateDrawer(){
+    const n=slides[si].querySelector('.pnote');
+    notesBody.innerHTML=n?n.innerHTML:'<p>—</p>';
+    notesBody.scrollTop=0;
+    notesNum.textContent=String(si+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  }
+  function toggleDrawer(){ drawerOpen=!drawerOpen; drawer.classList.toggle('open',drawerOpen); infoBtn.classList.toggle('active',drawerOpen); }
+  function closeDrawer(){ drawerOpen=false; drawer.classList.remove('open'); infoBtn.classList.remove('active'); }
+
+  const termOverlay=document.getElementById('termOverlay');
+  const termModal=document.getElementById('termModal');
+  const tmTitle=document.getElementById('tmTitle');
+  const tmBody=document.getElementById('tmBody');
+  const tmChip=termModal.querySelector('.tm-chip');
+  const tmClose=document.getElementById('tmClose');
+
+  const TERMS={
+    plugin:{
+      title:'plugin — um pedaço da API',
+      chip:'usersRoutes', chipClass:'blk-func',
+      body:`<p>No Fastify, <b>plugin</b> é uma função que recebe o <b>app</b> e acrescenta coisas nele — no nosso caso, rotas.</p>
+        <p class="tm-example">A função não roda sozinha: ela só é chamada quando o server.ts faz <code>app.register(usersRoutes)</code>.</p>
+        <p class="tm-example">Ela é <b>async</b> porque o Fastify espera o plugin terminar de montar as rotas antes de ligar o servidor.</p>`
+    },
+    instance:{
+      title:'FastifyInstance — o tipo do app',
+      chip:'FastifyInstance', chipClass:'blk-kw',
+      body:`<p>Quando escrevemos <code>const app = fastify()</code>, o TypeScript sabe sozinho o que é o app.</p>
+        <p class="tm-example">No arquivo de rotas, o app chega como <b>parâmetro</b>. Sem dizer o tipo, o TS não sabe que ele tem <code>.get</code>, <code>.post</code> etc.</p>
+        <p class="tm-example"><code>app: FastifyInstance</code> = "esse app é uma instância do Fastify". Aí o autocomplete volta a funcionar.</p>`
+    },
+    register:{
+      title:'register — ligando o plugin',
+      chip:'register', chipClass:'blk-func',
+      body:`<p><b>app.register(plugin)</b> chama a função do plugin passando o app pra ela.</p>
+        <p class="tm-example">É por isso que as rotas criadas dentro do arquivo passam a existir no servidor.</p>
+        <p class="tm-example">Esqueceu o register? O arquivo existe, mas ninguém liga ele na tomada: toda rota dele dá <b>404</b>.</p>`
+    },
+    prefix:{
+      title:'prefix — o começo do caminho',
+      chip:'prefix', chipClass:'blk-var',
+      body:`<p>O <b>prefix</b> é colado na frente de <b>todas</b> as rotas do plugin.</p>
+        <p class="tm-example"><code>prefix: "/users"</code> + <code>app.get("/")</code> = <b>GET /users</b></p>
+        <p class="tm-example"><code>prefix: "/users"</code> + <code>app.get("/:id")</code> = <b>GET /users/:id</b></p>
+        <p class="tm-example">Assim o caminho fica escrito num lugar só. Mudou de ideia sobre o nome? Troca só no server.ts.</p>`
+    }
+  };
+
+  function openTerm(key){
+    const t=TERMS[key]; if(!t) return;
+    tmTitle.textContent=t.title;
+    tmChip.textContent=t.chip;
+    tmChip.className='tm-chip blk '+t.chipClass;
+    tmBody.innerHTML=t.body;
+    termOverlay.classList.add('open');
+  }
+  function closeTerm(){ termOverlay.classList.remove('open'); }
+  document.querySelectorAll('[data-term]').forEach(el=>{
+    el.addEventListener('click',e=>{ e.stopPropagation(); openTerm(el.dataset.term); });
+    el.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); openTerm(el.dataset.term); }
+    });
+  });
+  tmClose.addEventListener('click',e=>{e.stopPropagation();closeTerm()});
+  termOverlay.addEventListener('click',e=>{ if(e.target===termOverlay) closeTerm(); });
+  termModal.addEventListener('click',e=>e.stopPropagation());
+
+  const maxStep=s=>slides[s].querySelectorAll('[data-step]').length
+    ? Math.max(0,...[...slides[s].querySelectorAll('[data-step]')].map(e=>+e.dataset.step)) : 0;
+
+  function render(){
+    slides.forEach((s,i)=>s.classList.toggle('active',i===si));
+    slides[si].querySelectorAll('[data-step]').forEach(el=>{
+      const on=+el.dataset.step<=step, was=el.dataset.shown==='1';
+      if(on && !was){
+        el.classList.add('reveal'); el.dataset.shown='1';
+        if(el.classList.contains('code-line')){ el.classList.remove('reveal'); void el.offsetWidth; el.classList.add('reveal'); }
+      }else if(!on && was){ el.classList.remove('reveal'); el.dataset.shown='0'; }
+    });
+    let done=0,total=0;
+    slides.forEach((s,i)=>{const m=maxStep(i)+1; total+=m; done+=i<si?m:(i===si?step+1:0)});
+    progFill.style.width=(done/total*100)+'%';
+    count.textContent=String(si+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    updateDrawer();
+  }
+  function next(){ if(step<maxStep(si)) step++; else if(si<slides.length-1){si++;step=0;} render(); }
+  function prev(){ if(step>0) step--; else if(si>0){si--;step=maxStep(si);} render(); }
+  function goto(i){ si=Math.max(0,Math.min(slides.length-1,i)); step=0; render(); }
+
+  document.getElementById('next').addEventListener('click',e=>{e.stopPropagation();next()});
+  document.getElementById('prev').addEventListener('click',e=>{e.stopPropagation();prev()});
+  document.getElementById('fs').addEventListener('click',e=>{e.stopPropagation(); document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.();});
+  infoBtn.addEventListener('click',e=>{e.stopPropagation();toggleDrawer()});
+  document.getElementById('closeNotes').addEventListener('click',e=>{e.stopPropagation();closeDrawer()});
+  drawer.addEventListener('click',e=>e.stopPropagation());
+  stage.addEventListener('click',e=>{ if(!e.target.closest('.navbtn') && !e.target.closest('[data-term]')) next(); });
+  document.addEventListener('keydown',e=>{
+    if(termOverlay.classList.contains('open')){
+      if(e.key==='Escape'){ closeTerm(); }
+      return;
+    }
+    switch(e.key){
+      case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown': case 'Enter': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); goto(0); break;
+      case 'End': e.preventDefault(); goto(slides.length-1); break;
+      case 'f': case 'F': document.fullscreenElement?document.exitFullscreen?.():document.documentElement.requestFullscreen?.(); break;
+      case 'i': case 'I': e.preventDefault(); toggleDrawer(); break;
+      case 'Escape': closeDrawer(); break;
+    }
+  });
+
+  // botao copiar: pega o texto de cada linha do bloco (sem o titulo) e manda pro Ctrl+C
+  function codeText(out){
+    return [...out.children].filter(el=>!el.classList.contains('bar') && !el.classList.contains('copy-btn'))
+      .map(el=>el.textContent.replace(/\u00a0/g,' ').replace(/\s+$/,'')).join('\n').replace(/^\n+|\n+$/g,'');
+  }
+  function copyText(text){
+    if(navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise((ok,fail)=>{
+      const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy') ? ok() : fail(); }catch(err){ fail(err); }
+      ta.remove();
+    });
+  }
+  document.querySelectorAll('.output').forEach(out=>{
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='copy-btn'; btn.textContent='copiar'; btn.setAttribute('aria-label','Copiar código');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation(); btn.blur();
+      copyText(codeText(out)).then(()=>{ btn.textContent='copiado!'; btn.classList.add('done'); },
+        ()=>{ btn.textContent='erro'; })
+        .finally(()=>setTimeout(()=>{ btn.textContent='copiar'; btn.classList.remove('done'); },1500));
+    });
+    btn.addEventListener('keydown',e=>e.stopPropagation());
+    out.appendChild(btn);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
