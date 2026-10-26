@@ -18,7 +18,7 @@ Content-Type: application/json
 # 2. Na resposta, copie o valor de "id"
 # 3. Cole aqui embaixo, no lugar de COLE-O-ID-AQUI
 # As rotas com /:id usam esse valor
-@userId = COLE-O-ID-AQUI
+@userId = 925e823e-896f-4c27-95fd-98ba7968226a
 
 ### READ - lista todos os usuários
 GET {{baseUrl}}/users
@@ -31,9 +31,9 @@ PUT {{baseUrl}}/users/{{userId}}
 Content-Type: application/json
 
 {
-    "name": "joao silva",
+    "name": "joao silva0990",
     "email": "joao.silva@email.com",
-    "password": "1234"
+    "password": "12343232"
 }
 
 ### DELETE - remove um usuário (rota ainda não criada)

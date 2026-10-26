@@ -44,6 +44,18 @@ app.put('/users/:id', async (request, reply) => {
     return user
 })
 
+app.delete('/users/:id', async (request, reply) => {
+    const { id } = request.params as { id: string }
+
+    const deleted = await connection('users').where({ id }).delete()
+
+    if (deleted === 0) {
+        return reply.status(404).send({ message: 'Usuário não encontrado' })
+    }
+
+    return reply.status(204).send()
+})
+
 app.listen({ port: env.PORT }).then(() => {
     console.log(env)
     console.log('Rodando na porta:' + process.env.PORT)
